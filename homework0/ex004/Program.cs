@@ -17,28 +17,31 @@ if(number == 1)
     System.Console.Write($"there is nothing between 1 and 1");
 }
 
-
-
 if(number>0)
 {
     for (int i = 1; i <= number; i++)
     {
         if(i%2 == 0)
         {
-            if(number%2 == 0) 
-            { 
+                if(i==number-1) 
+                {
+                    System.Console.Write($"{i}");
+                }
+                else
+                { 
                 if(i==number) 
                 {
                     System.Console.Write($"{i}");
                 } 
                 else 
-                { 
+                {
                     System.Console.Write($"{i}, ");
                 }
-            }
+                }
+            
             //System.Console.Write($"{i}, ");
         }
-    
+        
     }
 }
 else
@@ -54,17 +57,22 @@ else
         {
             if(i%2 == 0)
             {
-                if(-number%2 == 0) 
-            { 
+                 if(i==-number-1) 
+                {
+                    System.Console.Write($"{-i}");
+                }
+                else
+                { 
                 if(i==-number) 
                 {
-                    System.Console.Write($"-{i}");
+                    System.Console.Write($"{-i}");
                 } 
                 else 
-                { 
-                    System.Console.Write($"-{i}, ");
+                {
+                    System.Console.Write($"{-i}, ");
                 }
-            }
+                }
+                
                 //System.Console.Write($"-{i}, ");
             }
             
