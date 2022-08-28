@@ -1,38 +1,35 @@
-﻿//fibonachi
-
+﻿//вычислить числа фибоначи
 int Prompt(string messege)
 {
     Console.Write(messege);
     string strValue = Console.ReadLine() ?? "0";
-    int value = int.Parse(strValue);
-    bool isNumber = int.TryParse(strValue,out int value);
+    bool isNumber = int.TryParse(strValue, out int value);
     if (isNumber)
     {
         return value;
-    }
-    throw new Exception("данное значение нельзя преобразовать в целое число");
+    } 
+    throw new Exception("Данное начение не возможно преобразовать в целое число");
 }
-int value = Prompt("введите число > ");
+int value = Prompt("Введите число > ");
+if (value < 0)
+{
+    System.Console.WriteLine("Число должно быть c нуля");
+}
+else
+{
+    System.Console.WriteLine($"Номер числа последовательности Фибонначи {value}. Значние числа-> {Fibbonachi(value)}");
+}
 
-if (value <0 )
+int Fibbonachi(int value)
 {
-    System.Console.WriteLine("должно быть больше нуля");
-}
-else 
-{
-    System.Console.WriteLine($"номер числа фибонначи {value} -> {Fib(value)}");
-}
-
-int Fib (int value)
-{
-    int fib1 = 0;
-    int temp1 = 0;
-    int temp2 = 1;
-    for (int i == 0; i <= value; i++=)
-    {
-        fib1 = temp1+temp2;
-        temp1 = temp2;
-        temp2=fib1;
+    int fibbonachi = 0;
+    int tempVar1 = 0;
+    int tempVar2 = 1;
+    for (int i = 0; i <= value; i++)
+    {        
+        fibbonachi = tempVar1 + tempVar2;
+        tempVar1 = tempVar2;
+        tempVar2 = fibbonachi; 
     }
-    return temp1;
+    return tempVar1;
 }

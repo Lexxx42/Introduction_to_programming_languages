@@ -1,6 +1,4 @@
-﻿//факториал
-// :)
-
+﻿//вычислить факториал числа
 int Prompt(string messege)
 {
     Console.Write(messege);
@@ -8,23 +6,22 @@ int Prompt(string messege)
     int value = int.Parse(strValue);
     return value;
 }
-int value = Prompt("введите число > ");
-int factorial = 1;
-if (value <0 )
+int value = Prompt("Введите число > ");
+if (value < 0)
 {
-    System.Console.WriteLine("должно быть больше нуля");
+    System.Console.WriteLine("Число должно быть больше нуля");
 }
-else 
+else
 {
-    System.Console.WriteLine($"Факториал{value} -> {Factorial(value)}");
+    System.Console.WriteLine($"Факториал числа {value} равен -> {Factorial(value)}");
 }
 
 int Factorial(int value)
 {
-    int factorial=1;
+    int factorial = 1;
     for (int i = 1; i <= value; i++)
     {
-        factorial = factorial*i
+        factorial = factorial * i;
     }
     return factorial;
 }
