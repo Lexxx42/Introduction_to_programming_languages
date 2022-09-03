@@ -1,13 +1,18 @@
 from ssl import ALERT_DESCRIPTION_ACCESS_DENIED
 
 
-a = 5
-b = 3
+a = -51
+b = 0
 print("a =", a,"b =", b)
-c = a * b
+c = -8
+print('c =',c)
 print('a + c =', a + c)
 # Comment!
-if (a > b) :
-    print('a > b')
-else:
-    print('a < b')
+# поиск максимального из трех
+max = a
+if (b > max) :
+    max = b
+if (c > max):
+    max = c
+print("maximum is", max)
+# поиск максимума из пяти
