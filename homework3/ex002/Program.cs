@@ -17,10 +17,11 @@ int Prompt(string message)
 
 int[] InputCoords()
 {
-    int[] xyzCoords = new int[2];
-    xyzCoords[XCOORD] = Prompt("Введите x > ");
-    xyzCoords[YCOORD] = Prompt("Введите y > ");
-    xyzCoords[YCOORD] = Prompt("Введите z > ");
+    int numberOfDots = 2;
+    int[] xyzCoords = new int[numberOfDots];
+    xyzCoords[XCOORD] = Prompt($"Please enter x coordinate > ");
+    xyzCoords[YCOORD] = Prompt($"Please enter y coordinate > ");
+    xyzCoords[YCOORD] = Prompt($"Please enter z  coordinate > ");
     return xyzCoords;
 }
 
@@ -33,4 +34,4 @@ double Length(int[] firstCoord, int[] secondCoord)
 
 int[] firstPoint = InputCoords();
 int[] secondPoint = InputCoords();
-System.Console.WriteLine($"Длина {Length(firstPoint, secondPoint):f2}");
+System.Console.WriteLine($"Length {Length(firstPoint, secondPoint):f2}");
