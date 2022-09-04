@@ -14,7 +14,7 @@ int Prompt(string message)
 
 bool Validation(int numberForCheck)
 {
-    if (Math.Abs(numberForCheck) > 9 )
+    if (Math.Abs(numberForCheck) > 9)
     {
         return true;
     }
@@ -30,14 +30,14 @@ void CheckForPalindrome(int numberForCheck)
     int reversedNumber = 0;
     int numberForCheckSaved = Math.Abs(numberForCheck);
     numberForCheck = Math.Abs(numberForCheck);
-    while(numberForCheck>0)
+    while (numberForCheck > 0)
     {
         reversedNumber *= 10;
         reversedNumber += numberForCheck % 10;
         numberForCheck /= 10;
     }
     System.Console.WriteLine($"reversedNumber = {reversedNumber}"); // just for me to check
-    if(reversedNumber==numberForCheckSaved)
+    if (reversedNumber == numberForCheckSaved)
     {
         System.Console.WriteLine("Number is a palindrome!");
     }
@@ -45,11 +45,11 @@ void CheckForPalindrome(int numberForCheck)
     {
         System.Console.WriteLine("Number isn't a palindrome!");
     }
-    
+
 }
 
 int numberInput = Prompt("Please, enter the number > ");
-if(Validation(numberInput))
+if (Validation(numberInput))
 {
     CheckForPalindrome(numberInput);
 }
