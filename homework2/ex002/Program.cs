@@ -4,7 +4,7 @@ void ThreeDigitNumberWithoutMiddle(int X)
 {
     int result = -1;
     if(X==0) {result = new Random().Next(100,1000);}
-    if(X==1) {result = new Random().Next(-1000,-100);}
+    if(X==1) {result = new Random().Next(-1000,-100);} //ошибка! нельзя включать -1000!
     System.Console.WriteLine($"Our random number is > {result}");
     int last_digit = result;
     int first_digit = result;
