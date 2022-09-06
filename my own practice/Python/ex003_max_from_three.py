@@ -6,4 +6,5 @@ second_number = int(input())
 print("введите второе число >")
 third_number = int(input())
 
-print("max=", max(first_number, second_number, third_number), "min=", min(first_number, second_number, third_number))
+print("max=", max(first_number, second_number, third_number),
+      "min=", min(first_number, second_number, third_number))
