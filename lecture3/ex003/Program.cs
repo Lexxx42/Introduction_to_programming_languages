@@ -4,7 +4,8 @@
 
 
 string text = "sdfsd iaeurh oawei IOOHDFQAw oqPWH"
-+"ASDFASE we f3245 2as df asd";
++"ASDFASE we f3245 2as df asd"
++"kkkkk";
 
 // string s = "qwerty"
 //             012345
@@ -23,5 +24,7 @@ string Replace(string text, char oldValue, char newValue)
 
 string newText = Replace(text, ' ', '|');
 System.Console.WriteLine(newText);
+
 System.Console.WriteLine();
 newText = Replace(newText, 'k', 'K');
+System.Console.WriteLine(newText);
