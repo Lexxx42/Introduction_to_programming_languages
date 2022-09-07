@@ -14,7 +14,7 @@ void Method2(string msg)
 
 Method2("text");
 
-void Method21(string msg)
+void Method21(string msg, int count)
 {
     int i = 0;
     while (i<count)
@@ -32,7 +32,7 @@ int Method3()
     return DateTime.Now.Year;
 }
 
-int year = Method3;
+int year = Method3();
 System.Console.WriteLine(year);
 
 
