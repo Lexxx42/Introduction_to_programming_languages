@@ -1,5 +1,4 @@
 # Задача 3: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
-import array as arr
 
 
 print("This program prints the third digit of the given number, or reports that there is no third digit.")
