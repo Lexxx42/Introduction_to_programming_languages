@@ -7,3 +7,47 @@
 // 1 2 3 4 5 6 7 8 -> 7
 // 1 2 3 4 5 6 8 7 -> 7
 
+int[] CreationArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = new Random().Next(0, 10);
+    }
+    return array;
+}
+
+void PrintArray(int[] array)
+{
+    for (int i = 0; i < array.Length - 1; i++)
+    {
+        System.Console.Write($"{array[i]}\t");
+    }
+}
+
+void SearchForMax(int[] array)
+{
+    int max1 = array[0];
+    int max2 = array[1];
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] > max1)
+        {
+            max1 = array[i];
+        }
+        else if (array[i] > max2 && array[i]!=max1)
+        {
+            max2 = array[i];
+        }
+    }
+    System.Console.WriteLine($"max = {max1}, second max = {max2}");
+}
+
+
+System.Console.WriteLine("This program sets an array of 8 elements with random"
++ "numbers and displays them on the screen. Also looks for the second maximum"
++ "(the number is less than the maximum element, but greater than all the others)");
+System.Console.WriteLine();
+int[] array = new int[new Random().Next(7, 12)];
+PrintArray(CreationArray(array));
+System.Console.WriteLine();
+SearchForMax(array);
