@@ -26,11 +26,6 @@ void PrintArray(int[] array)
     System.Console.WriteLine();
 }
 
-System.Console.WriteLine("This program defines an array of 8 elements and displays them on the screen: random generation");
-System.Console.WriteLine();
-int[] array = new int[new Random().Next(3, 9)];
-PrintArray(CreationArray(array));
-
 
 //input 8 elements -> array
 int Prompt(string message)
@@ -48,6 +43,10 @@ int[] ArrayFill(int[] array)
     return array;
 }
 
+System.Console.WriteLine("This program defines an array of 8 elements and displays them on the screen: random generation");
+System.Console.WriteLine();
+int[] array = new int[new Random().Next(3, 9)];
+PrintArray(CreationArray(array));
 
 System.Console.WriteLine("This program defines an array of 8 elements and displays them on the screen: input numbers from user");
 System.Console.WriteLine();
