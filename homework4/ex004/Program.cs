@@ -26,15 +26,19 @@ void PrintArray(int[] array)
 
 void SearchForMax(int[] array)
 {
-    int max1 = array[0];
-    int max2 = array[1];
+    int max1 = 0;
+    int max2 = 0;
+    int temp = 0;
     for (int i = 0; i < array.Length; i++)
     {
         if (array[i] > max1)
         {
+            temp = max1;
             max1 = array[i];
+            max2 = temp;
+
         }
-        else if (array[i] > max2 && array[i]!=max1)
+        if (array[i] > max2 && array[i] < max1)
         {
             max2 = array[i];
         }
@@ -47,7 +51,8 @@ System.Console.WriteLine("This program sets an array of 8 elements with random"
 + "numbers and displays them on the screen. Also looks for the second maximum"
 + "(the number is less than the maximum element, but greater than all the others)");
 System.Console.WriteLine();
-int[] array = new int[new Random().Next(7, 12)];
+int length = 8;
+int[] array = new int[length];
 PrintArray(CreationArray(array));
 System.Console.WriteLine();
 SearchForMax(array);
