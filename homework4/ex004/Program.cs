@@ -11,7 +11,7 @@ int[] CreationArray(int[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = new Random().Next(0, 10);
+        array[i] = new Random().Next(-9, 0);
     }
     return array;
 }
@@ -26,9 +26,9 @@ void PrintArray(int[] array)
 
 void SearchForMax(int[] array)
 {
-    int max1 = 0;
-    int max2 = 0;
-    int temp = 0;
+    int max1 = array[0];
+    int max2 = array[0];
+    int temp = array[0];
     for (int i = 0; i < array.Length; i++)
     {
         if (array[i] > max1)
