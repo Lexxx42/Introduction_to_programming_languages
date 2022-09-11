@@ -29,10 +29,12 @@ double Pow(int A, int B)
 
 System.Console.WriteLine("This program takes two numbers (A and B) as input and raises the number A to the natural power B");
 System.Console.WriteLine();
-int numberA = Prompt("Please, enter A number > ");
-System.Console.WriteLine();
-int numberB = Prompt("Please, enter B number > ");
-System.Console.WriteLine();
+while (true)
+{
+    int numberA = Prompt("Please, enter A number > ");
+    System.Console.WriteLine();
+    int numberB = Prompt("Please, enter B number > ");
+    System.Console.WriteLine();
 if (Validation(numberB) == false)
 {
     System.Console.WriteLine("Number B must be a natural number!");
@@ -40,4 +42,5 @@ if (Validation(numberB) == false)
 else
 {
     System.Console.WriteLine($"{numberA} ^ {numberB} = {Pow(numberA, numberB)}");
+}
 }
