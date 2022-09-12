@@ -6,12 +6,14 @@
 // 1 2 1 2 1 1 1 1 -> 1
 // 1 2 3 4 5 6 7 8 -> 7
 // 1 2 3 4 5 6 8 7 -> 7
+const int MIN = -10;
+const int MAX = 10;
 
 int[] CreationArray(int[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = new Random().Next(-9, 0);
+        array[i] = new Random().Next(MIN, MAX);
     }
     return array;
 }
@@ -26,9 +28,9 @@ void PrintArray(int[] array)
 
 void SearchForMax(int[] array)
 {
-    int max1 = array[0];
-    int max2 = array[0];
-    int temp = array[0];
+    int max1 = MIN-1;
+    int max2 = MIN-1;
+    int temp = MIN-1;
     for (int i = 0; i < array.Length; i++)
     {
         if (array[i] > max1)
