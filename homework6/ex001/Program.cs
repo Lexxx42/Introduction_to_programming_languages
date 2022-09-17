@@ -38,7 +38,7 @@ int[] InputArray(int length)
 
 
 void PrintArray(int[] array)
-{    
+{
     for (int i = 0; i < array.Length; i++)
     {
         System.Console.Write($"{array[i]} ");
@@ -47,12 +47,12 @@ void PrintArray(int[] array)
 }
 
 
-int CountNumbers(int[]array)
+int CountNumbers(int[] array)
 {
     int count = 0;
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i]>0)
+        if (array[i] > 0)
         {
             count++;
         }
