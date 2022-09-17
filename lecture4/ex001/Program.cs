@@ -40,13 +40,6 @@ void FillArray(int[,]matr)
 
 
 
-
-
-
-
-
-
-
 int[,] matrix = new int[3, 4];
 PrintArray(matrix);
 System.Console.WriteLine();
