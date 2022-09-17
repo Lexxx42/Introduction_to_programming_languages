@@ -102,6 +102,7 @@ void Result(int length, int[,] matrix)
         PrintArray(matrix);
         int sumMaxRow = SumMaxRow(matrix);
         int sumMinCol = SumMinCol(matrix);
+        System.Console.WriteLine();
         System.Console.WriteLine($"Sum of max for rows = {sumMaxRow}");
         System.Console.WriteLine();
         System.Console.WriteLine($"Sum of min for columns = {sumMinCol}");
