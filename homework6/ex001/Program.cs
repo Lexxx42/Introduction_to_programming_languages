@@ -12,7 +12,7 @@ int Prompt(string message)
     {
         return number;
     }
-    throw new Exception("Вы ввели не число");
+    throw new Exception("You didn't enter a number");
 }
 
 
