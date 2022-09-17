@@ -26,9 +26,13 @@ int Prompt(string message)
 
 void Result(int b1, int k1, int b2, int k2)
 {
-    if (Check(b1, k1, b2, k2) == false)
+    if (Check(b1, k1, b2, k2) == -1)
     {
         System.Console.WriteLine("Parallel lines!");
+    }
+    else if (Check(b1, k1, b2, k2) == 0)
+    {
+        System.Console.WriteLine("Lines match!");
     }
     else
     {
@@ -38,14 +42,18 @@ void Result(int b1, int k1, int b2, int k2)
 }
 
 
-bool Check(int b1, int k1, int b2, int k2)
+int Check(int b1, int k1, int b2, int k2)
 {
-    if (k1 == k2)
+    if (k1 == k2 && b1 == b2)
     {
-        return false;
+        return 0;
+    }
+    else if (k1 == k2)
+    {
+        return -1;
 
     }
-    return true;
+    return 1;
 }
 
 
