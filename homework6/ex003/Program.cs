@@ -94,7 +94,7 @@ void Result(int length, int[,] matrix)
 {
     if (Validation(length) == false)
     {
-        System.Console.WriteLine("Length can't be or equal to zero!");
+        System.Console.WriteLine("Length can't be less or equal to zero!");
     }
     else
     {
