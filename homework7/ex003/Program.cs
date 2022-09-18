@@ -76,7 +76,7 @@ int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates and pr
     return matrix;
 }
 
-List<double> SumAverageColumn(int[,] matrix)
+List<double> SumAverageColumn(int[,] matrix) // List with averages.
 {
     var answer = new List<double>();
     for (int i = 0; i < matrix.GetLength(1); i++)
