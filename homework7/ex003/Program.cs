@@ -60,11 +60,15 @@ void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result o
         System.Console.WriteLine("Average for each column:");
         System.Console.WriteLine();
         var answer = SumAverageColumn(generatedMatrix);
-        foreach (double item in answer)
-        {
-            System.Console.Write($"{item}\t");
-        }
+        PrintList(answer);
+    }
+}
 
+void PrintList(List<double> list) // Print elements from list.
+{
+    foreach (double item in list)
+    {
+        System.Console.Write($"{item}\t");
     }
 }
 
