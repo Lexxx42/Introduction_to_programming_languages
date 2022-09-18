@@ -97,8 +97,6 @@ List<double> SumAverageColumn(int[,] matrix) // List with averages.
 }
 
 
-
-
 System.Console.WriteLine("This program generates random array filled with whole numbers, from MIN to MAX."
 + "Then finds the arithmetic mean of the elements in each column");
 System.Console.WriteLine();
@@ -106,5 +104,4 @@ int numberOfRows = Prompt("Please enter the number of rows: ");
 int numberOfColumns = Prompt("Please enter the number of columns: ");
 System.Console.WriteLine();
 ResultOfGeneration(numberOfRows, numberOfColumns);
-
 
