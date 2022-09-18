@@ -57,7 +57,8 @@ void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result o
     else
     {
         int[,] generatedMatrix = GenerateMatrix(numberOfRows, numberOfColumns);
-        //System.Console.WriteLine($"{SumAverageColumn(generatedMatrix)}");
+        System.Console.WriteLine("Average for each column:");
+        System.Console.WriteLine();
         var answer = SumAverageColumn(generatedMatrix);
         foreach (double item in answer)
         {
@@ -78,10 +79,10 @@ int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates and pr
 List<double> SumAverageColumn(int[,] matrix)
 {
     var answer = new List<double>();
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    for (int i = 0; i < matrix.GetLength(1); i++)
     {
         double sumColumn = 0;
-        for (int j = 0; j < matrix.GetLength(1); j++)
+        for (int j = 0; j < matrix.GetLength(0); j++)
         {
             sumColumn += matrix[j, i];
         }
