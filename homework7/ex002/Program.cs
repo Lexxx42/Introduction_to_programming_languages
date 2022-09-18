@@ -105,11 +105,3 @@ int numberOfColumns = Prompt("Please enter the number of columns: ");
 System.Console.WriteLine();
 ResultOfGeneration(numberOfRows, numberOfColumns);
 
-
-
-
-
-
-
-
-// SearchForNumberFromPosition(generatedMatrix, rowPosition, columnPosition);
