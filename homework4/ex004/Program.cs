@@ -24,6 +24,7 @@ void PrintArray(int[] array)
     {
         System.Console.Write($"{array[i]}\t");
     }
+    System.Console.WriteLine();
 }
 
 void SearchForMax(int[] array)

@@ -6,8 +6,8 @@
 8 4 2 4
 Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3. */
 
-const int MIN = -20;
-const int MAX = 20; // Max and Min for generation
+const int MIN = 0;
+const int MAX = 3; // Max and Min for generation
 
 int Prompt(string message) // Input values.
 {
@@ -57,8 +57,13 @@ void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result o
     else
     {
         int[,] generatedMatrix = GenerateMatrix(numberOfRows, numberOfColumns);
-        (int rowPosition, int columnPosition) = InputNumbersCoordinates();
-        
+        //System.Console.WriteLine($"{SumAverageColumn(generatedMatrix)}");
+        var answer = SumAverageColumn(generatedMatrix);
+        foreach (double item in answer)
+        {
+            System.Console.Write($"{item}\t");
+        }
+
     }
 }
 
@@ -70,11 +75,31 @@ int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates and pr
     return matrix;
 }
 
+List<double> SumAverageColumn(int[,] matrix)
+{
+    var answer = new List<double>();
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        double sumColumn = 0;
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            sumColumn += matrix[j, i];
+        }
+        double avrCol = sumColumn / matrix.GetLength(1);
+        answer.Add(avrCol);
+    }
+    return answer;
+}
 
-System.Console.WriteLine("This program generates random array filled with real numbers, from MIN to MAX");
+
+
+
+System.Console.WriteLine("This program generates random array filled with whole numbers, from MIN to MAX."
++ "Then finds the arithmetic mean of the elements in each column");
 System.Console.WriteLine();
 int numberOfRows = Prompt("Please enter the number of rows: ");
 int numberOfColumns = Prompt("Please enter the number of columns: ");
 System.Console.WriteLine();
 ResultOfGeneration(numberOfRows, numberOfColumns);
+
 
