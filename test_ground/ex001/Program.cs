@@ -1,1 +1,1 @@
-﻿//only for tests! Go away!
+﻿// Only for tests! Go away!
