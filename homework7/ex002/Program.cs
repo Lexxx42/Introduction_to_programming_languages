@@ -60,7 +60,7 @@ void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result o
         (int rowPosition, int columnPosition) = InputNumbersCoordinates();
         if (ValidationPosition(generatedMatrix, rowPosition, columnPosition))
         {
-            System.Console.WriteLine("Search is out of range of matrix!");
+            System.Console.WriteLine("There is no such element within the matrix!");
         }
         else
         {
@@ -98,7 +98,8 @@ int SearchNumbersValue(int[,] matrix, int rowPosition, int columnPosition) // Se
 }
 
 
-System.Console.WriteLine("This program generates random array filled with real numbers, from MIN to MAX");
+System.Console.WriteLine("This program generates random array filled with whole numbers, from MIN to MAX."
++" User inputs row position and column position for search withing the matrix. Program returns the value from matrix");
 System.Console.WriteLine();
 int numberOfRows = Prompt("Please enter the number of rows: ");
 int numberOfColumns = Prompt("Please enter the number of columns: ");
