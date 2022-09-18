@@ -10,10 +10,10 @@
 // Введенный элемент 6, результат: такого элемента нет.
 
 // + посчитали количество найденных элементов
-// эти элементы отправлили в конец массива
-int Prompt(string messege)
+// эти элементы отправили в конец массива
+int Prompt(string message)
 {
-    Console.Write(messege);
+    Console.Write(message);
     string strValue = Console.ReadLine() ?? "0";
     bool isNumber = int.TryParse(strValue, out int value);
     if (isNumber)
