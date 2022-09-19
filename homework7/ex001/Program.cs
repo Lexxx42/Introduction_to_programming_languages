@@ -41,7 +41,7 @@ void FillArray(double[,] matrixGenerated) // Matrix generation.
     }
 }
 
-bool Validation(int numberOfRows, int numberOfColumns) // Check input values.
+bool Validation(int numberOfRows, int numberOfColumns) // Check input values. - тут чисто формально можно без нее, а сразу поместить условия в 51 строчку
 {
     return (numberOfRows > 0 && numberOfColumns > 0);
 }
@@ -55,7 +55,7 @@ void Result(int numberOfRows, int numberOfColumns) // Print result.
     else
     {
         double[,] matrix = new double[numberOfRows, numberOfColumns];
-        FillArray(matrix);
+        FillArray(matrix); - тоже число формально я бы вынул из этой функции, что бы потом в основной части получилась красивая фраза.
         PrintArray(matrix);
     }
 }
