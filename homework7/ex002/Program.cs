@@ -45,10 +45,10 @@ void FillArray(int[,] matrixGenerated) // Matrix generation.
 
 bool Validation(int numberOfRows, int numberOfColumns) // Check input values.
 {
-    return (numberOfRows > 0 && numberOfColumns > 0);
+    return (numberOfRows > 0 && numberOfColumns > 0); - как в предыидущем убрал бы внутрь ResultOfGeneration - протсо меньше строчек.
 }
 
-void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result of generation.
+void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result of generation. - переместил бы в конец что бы было понятно что это основной функционал
 {
     if (!Validation(numberOfRows, numberOfColumns))
     {
@@ -69,6 +69,7 @@ void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result o
             System.Console.WriteLine($"Found value = {foundValue}");
         }
     }
+    // на мой не профессиональный взгляд большая функция переполненная функциями подтянутыми снаружи, которые разбросаны в разных частях кода - не очень удобно читать.
 }
 
 int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates and prints matrix.
@@ -79,16 +80,17 @@ int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates and pr
     return matrix;
 }
 
-(int, int) InputNumbersCoordinates() // User search input.
+(int, int) InputNumbersCoordinates() // User search input. - здорово! 
 {
     int rowPosition = Prompt("Please enter number's row position: ");
     int columnPosition = Prompt("Please enter number's column position: ");
     return (rowPosition, columnPosition);
 }
 
-bool ValidationPosition(int[,] matrix, int rowPosition, int columnPosition) // Validation of search query.
+bool ValidationPosition(int[,] matrix, int rowPosition, int columnPosition) // Validation of search query. 
 {
-    return matrix.GetLength(0) < rowPosition || matrix.GetLength(1) < columnPosition || rowPosition < 1 || columnPosition < 1;
+    return matrix.GetLength(0) < rowPosition || matrix.GetLength(1) < columnPosition || rowPosition < 1 || columnPosition < 1; 
+    //rowPosition < 1 || columnPosition < 1; - перенёс бы ввод данных там эту проверку делал 
 }
 
 
@@ -105,4 +107,4 @@ System.Console.WriteLine();
 int numberOfRows = Prompt("Please enter the number of rows: ");
 int numberOfColumns = Prompt("Please enter the number of columns: ");
 System.Console.WriteLine();
-ResultOfGeneration(numberOfRows, numberOfColumns);
+ResultOfGeneration(numberOfRows, numberOfColumns); //- здорово и локанично( я для себя придумал такую вешь - типа когда пишу - что бы читалось как предложение со вложенными функциями или внутрянкой)
