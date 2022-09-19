@@ -60,15 +60,11 @@ void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result o
         System.Console.WriteLine("Average for each column:");
         System.Console.WriteLine();
         var answer = SumAverageColumn(generatedMatrix);
-        PrintList(answer);
-    }
-}
+        foreach (double item in answer)
+        {
+            System.Console.Write($"{item:f2}\t");
+        }
 
-void PrintList(List<double> list) // Print elements from list.
-{
-    foreach (double item in list)
-    {
-        System.Console.Write($"{item}\t");
     }
 }
 
@@ -97,6 +93,7 @@ List<double> SumAverageColumn(int[,] matrix) // List with averages.
 }
 
 
+Console.Clear();
 System.Console.WriteLine("This program generates random array filled with whole numbers, from MIN to MAX."
 + "Then finds the arithmetic mean of the elements in each column");
 System.Console.WriteLine();
@@ -104,4 +101,3 @@ int numberOfRows = Prompt("Please enter the number of rows: ");
 int numberOfColumns = Prompt("Please enter the number of columns: ");
 System.Console.WriteLine();
 ResultOfGeneration(numberOfRows, numberOfColumns);
-

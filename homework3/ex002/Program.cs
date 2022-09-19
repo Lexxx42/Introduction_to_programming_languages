@@ -3,35 +3,40 @@
 // A (3,6,8); B (2,1,-7), -> 15.84
 // A (7,-5, 0); B (1,-1,9) -> 11.53
 
-const int XCOORD = 1;
-const int YCOORD = 1;
-const int ZCOORD = 1;
+const int XCOORDINATE = 1;
+const int YCOORDINATE = 1;
+const int ZCOORDINATE = 1;
 
-System.Console.WriteLine("This program takes as input the coordinates of two points and finds the distance between them in 3D space");
-
-int Prompt(string message)
+int Prompt(string message) // Input values.
 {
-    System.Console.Write(message);
-    return Convert.ToInt32(Console.ReadLine());
+    Console.Write(message);
+    bool isDigit = int.TryParse(Console.ReadLine(), out int number);
+    if (isDigit)
+    {
+        return number;
+    }
+    throw new Exception("You didn't enter a number");
 }
 
-int[] InputCoords()
+int[] InputCoordinates() // Input Coordinates.
 {
     int numberOfDots = 2;
     int[] xyzCoords = new int[numberOfDots];
-    xyzCoords[XCOORD] = Prompt($"Please enter x coordinate > ");
-    xyzCoords[YCOORD] = Prompt($"Please enter y coordinate > ");
-    xyzCoords[YCOORD] = Prompt($"Please enter z  coordinate > ");
+    xyzCoords[XCOORDINATE] = Prompt($"Please enter x coordinate > ");
+    xyzCoords[YCOORDINATE] = Prompt($"Please enter y coordinate > ");
+    xyzCoords[ZCOORDINATE] = Prompt($"Please enter z  coordinate > ");
     return xyzCoords;
 }
 
-
-double Length(int[] firstCoord, int[] secondCoord)
+double Length(int[] firstCoord, int[] secondCoord) // Length calculation.
 {
-    return Math.Sqrt(Math.Pow(firstCoord[XCOORD] - secondCoord[XCOORD], 2)
-    + Math.Pow(firstCoord[YCOORD] - secondCoord[YCOORD], 2) + Math.Pow(firstCoord[ZCOORD] - secondCoord[ZCOORD], 2));
+    return Math.Sqrt(Math.Pow(firstCoord[XCOORDINATE] - secondCoord[XCOORDINATE], 2)
+    + Math.Pow(firstCoord[YCOORDINATE] - secondCoord[YCOORDINATE], 2) + Math.Pow(firstCoord[ZCOORDINATE] - secondCoord[ZCOORDINATE], 2));
 }
 
-int[] firstPoint = InputCoords();
-int[] secondPoint = InputCoords();
+
+Console.Clear();
+System.Console.WriteLine("This program takes as input the coordinates of two points and finds the distance between them in 3D space");
+int[] firstPoint = InputCoordinates();
+int[] secondPoint = InputCoordinates();
 System.Console.WriteLine($"Length {Length(firstPoint, secondPoint):f2}");

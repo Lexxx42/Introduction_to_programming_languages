@@ -3,18 +3,20 @@
 // 6, 1, 33 -> [6, 1, 33]
 // do we enter these numbers?
 
+const int MIN = 0;
+const int MAX = 100;
+const int lengthArray = 8;
 
-//random generation
-int[] CreationArray(int[] array)
+int[] CreationArray(int[] array) // Generates array, filled with random numbers.
 {
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = new Random().Next(0, 100);
+        array[i] = new Random().Next(MIN, MAX);
     }
     return array;
 }
 
-void PrintArray(int[] array)
+void PrintArray(int[] array) // Prints the array.
 {
     System.Console.Write("[");
     for (int i = 0; i < array.Length - 1; i++)
@@ -26,28 +28,37 @@ void PrintArray(int[] array)
     System.Console.WriteLine();
 }
 
-
-//input 8 elements -> array
-int Prompt(string message)
+int Prompt(string message) // Input values.
 {
-    System.Console.Write(message);
-    return Convert.ToInt32(Console.ReadLine());
+    Console.Write(message);
+    bool isDigit = int.TryParse(Console.ReadLine(), out int number);
+    if (isDigit)
+    {
+        return number;
+    }
+    throw new Exception("You didn't enter a number");
 }
 
-int[] ArrayFill(int[] array)
+int[] ArrayFill(int[] array) // Filling the array with user's numbers.
 {
     for (int i = 0; i < array.Length; i++)
     {
         array[i] = Prompt("Please, enter the number > ");
     }
+    System.Console.WriteLine();
     return array;
 }
 
+
+// Random generation of array.
+Console.Clear();
 System.Console.WriteLine("This program defines an array of 8 elements and displays them on the screen: random generation");
 System.Console.WriteLine();
-int[] array = new int[new Random().Next(3, 9)];
+int[] array = new int[lengthArray];
 PrintArray(CreationArray(array));
+System.Console.WriteLine();
 
+// User generation of array.
 System.Console.WriteLine("This program defines an array of 8 elements and displays them on the screen: input numbers from user");
 System.Console.WriteLine();
 int length = 8;

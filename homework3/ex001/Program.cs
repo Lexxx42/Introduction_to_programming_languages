@@ -4,52 +4,57 @@
 // 12821 -> да
 // 23432 -> да
 
-System.Console.WriteLine("This program takes at least 2 digit number as input and checks if it is a palindrome");
-
-int Prompt(string message)
+int Prompt(string message) // Input values.
 {
-    System.Console.Write(message);
-    return Convert.ToInt32(Console.ReadLine());
+    Console.Write(message);
+    bool isDigit = int.TryParse(Console.ReadLine(), out int number);
+    if (isDigit)
+    {
+        return number;
+    }
+    throw new Exception("You didn't enter a number");
 }
 
-bool Validation(int numberForCheck)
+bool Validation(int numberForCheck) // Check number if it can be a palindrome.
 {
-    if (Math.Abs(numberForCheck) > 9)
+    return Math.Abs(numberForCheck) > 9;
+}
+
+int ReverseNumber(int numberForReverse) // Reverse number's digits.
+{
+    int reversedNumber = 0;
+    numberForReverse = Math.Abs(numberForReverse);
+    while (numberForReverse > 0)
     {
-        return true;
+        reversedNumber *= 10;
+        reversedNumber += numberForReverse % 10;
+        numberForReverse /= 10;
+    }
+    return reversedNumber;
+}
+
+void PrintPalindrome(int numberForCheck) // Prints if it's a palindrome or not.
+{
+    if (Validation(numberForCheck))
+    {
+        if (Math.Abs(numberForCheck) == ReverseNumber(numberForCheck))
+        {
+            System.Console.WriteLine("Number is a palindrome!");
+        }
+        else
+        {
+            System.Console.WriteLine("Number isn't a palindrome!");
+        }
     }
     else
     {
         System.Console.WriteLine("Number has to be at least 2 digits");
-        return false;
-    }
-}
-
-void CheckForPalindrome(int numberForCheck)
-{
-    int reversedNumber = 0;
-    int numberForCheckSaved = Math.Abs(numberForCheck);
-    numberForCheck = Math.Abs(numberForCheck);
-    while (numberForCheck > 0)
-    {
-        reversedNumber *= 10;
-        reversedNumber += numberForCheck % 10;
-        numberForCheck /= 10;
-    }
-    System.Console.WriteLine($"reversedNumber = {reversedNumber}"); // just for me to check
-    if (reversedNumber == numberForCheckSaved)
-    {
-        System.Console.WriteLine("Number is a palindrome!");
-    }
-    else
-    {
-        System.Console.WriteLine("Number isn't a palindrome!");
     }
 
 }
 
+
+Console.Clear();
+System.Console.WriteLine("This program takes at least 2 digit number as input and checks if it is a palindrome");
 int numberInput = Prompt("Please, enter the number > ");
-if (Validation(numberInput))
-{
-    CheckForPalindrome(numberInput);
-}
+PrintPalindrome(numberInput);

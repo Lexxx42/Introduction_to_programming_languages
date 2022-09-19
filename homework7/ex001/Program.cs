@@ -61,7 +61,7 @@ void Result(int numberOfRows, int numberOfColumns) // Print result.
 }
 
 
-
+Console.Clear();
 System.Console.WriteLine("This program generates random array filled with real numbers, from MIN to MAX");
 System.Console.WriteLine();
 int numberOfRows = Prompt("Please enter the number of rows: ");

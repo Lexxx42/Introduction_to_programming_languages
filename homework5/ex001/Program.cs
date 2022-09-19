@@ -1,20 +1,10 @@
 ﻿// Задача 1: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
 // [345, 897, 568, 234] -> 2
+
 const int MINRANDOM = 100;
-const int MAXRANDOM = 999; // only positive 3 digit numbers allowed!
+const int MAXRANDOM = 999; // Only positive 3 digit numbers allowed.
 
-int[] GenerateArray(int length)
-{
-    Random rnd = new Random();
-    int[] array = new int[length];
-    for (int i = 0; i < array.Length; i++)
-    {
-        array[i] = rnd.Next(MINRANDOM, MAXRANDOM + 1);
-    }
-    return array;
-}
-
-int Prompt(string message)
+int Prompt(string message) // Input values.
 {
     Console.Write(message);
     bool isDigit = int.TryParse(Console.ReadLine(), out int number);
@@ -25,7 +15,18 @@ int Prompt(string message)
     throw new Exception("You didn't entered the number!");
 }
 
-void PrintArray(int[] array)
+int[] GenerateArray(int length) // Generation of array, filled with random numbers.
+{
+    Random rnd = new Random();
+    int[] array = new int[length];
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = rnd.Next(MINRANDOM, MAXRANDOM + 1);
+    }
+    return array;
+}
+
+void PrintArray(int[] array) // Print array.
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -34,7 +35,7 @@ void PrintArray(int[] array)
     System.Console.WriteLine();
 }
 
-int CountEven(int[] array)
+int CountEven(int[] array) // Count even numbers in array.
 {
     int count = 0;
     for (int i = 0; i < array.Length; i++)
@@ -47,17 +48,32 @@ int CountEven(int[] array)
     return count;
 }
 
-bool Validation(int length)
+int Validation(int length) // Validation of array's length.
 {
-    if (length < 0) { return false; }
-    return true;
+    if (length < 0)
+    {
+        return -1;
+    }
+    else if (length == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
 }
 
-System.Console.WriteLine("This program fills an array filled with random positive three-digit numbers. And will show the number of even numbers in the array");
-int length = Prompt("Please enter array's length > ");
-if (Validation(length) == true)
+void PrintCountEvenNumbers(int length) // Print count of even numbers in array.
 {
-    if (length == 0) { System.Console.WriteLine("Your array has no elements!"); }
+    if (Validation(length) == 0)
+    {
+        System.Console.WriteLine("Your array has no elements!");
+    }
+    else if (Validation(length) == -1)
+    {
+        System.Console.WriteLine("Length can't be negative!");
+    }
     else
     {
         int[] array = GenerateArray(length);
@@ -65,7 +81,9 @@ if (Validation(length) == true)
         System.Console.WriteLine($"There are {CountEven(array)} even numbers in the array");
     }
 }
-else
-{
-    System.Console.WriteLine("Length can't be negative!");
-}
+
+
+Console.Clear();
+System.Console.WriteLine("This program fills an array filled with random positive three-digit numbers. And will show the number of even numbers in the array");
+int length = Prompt("Please enter array's length > ");
+PrintEvenNumbers(length);

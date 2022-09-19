@@ -6,10 +6,12 @@
 // 1 2 1 2 1 1 1 1 -> 1
 // 1 2 3 4 5 6 7 8 -> 7
 // 1 2 3 4 5 6 8 7 -> 7
+
 const int MIN = -10;
 const int MAX = 10;
+const int lengthArray = 8;
 
-int[] CreationArray(int[] array)
+int[] CreationArray(int[] array) // Creation of array, filled with random numbers.
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -18,20 +20,20 @@ int[] CreationArray(int[] array)
     return array;
 }
 
-void PrintArray(int[] array)
+void PrintArray(int[] array) // Print array.
 {
-    for (int i = 0; i < array.Length - 1; i++)
+    for (int i = 0; i < array.Length; i++)
     {
         System.Console.Write($"{array[i]}\t");
     }
     System.Console.WriteLine();
 }
 
-void SearchForMax(int[] array)
+(int, int) SearchForMax(int[] array) // Searching for first and second maximum.
 {
-    int max1 = MIN-1;
-    int max2 = MIN-1;
-    int temp = MIN-1;
+    int max1 = MIN - 1;
+    int max2 = MIN - 1;
+    int temp = MIN - 1;
     for (int i = 0; i < array.Length; i++)
     {
         if (array[i] > max1)
@@ -45,17 +47,25 @@ void SearchForMax(int[] array)
         {
             max2 = array[i];
         }
+
     }
-    System.Console.WriteLine($"max = {max1}, second max = {max2}");
+    return (max1, max2);
+}
+
+void PrintMaxes(int firstMax, int secondMax) // Print maxes found.
+{
+    System.Console.WriteLine($"Maximum = {firstMax}, second maximum = {secondMax}");
 }
 
 
+Console.Clear();
 System.Console.WriteLine("This program sets an array of 8 elements with random"
 + "numbers and displays them on the screen. Also looks for the second maximum"
 + "(the number is less than the maximum element, but greater than all the others)");
 System.Console.WriteLine();
-int length = 8;
-int[] array = new int[length];
-PrintArray(CreationArray(array));
+int[] array = new int[lengthArray];
+array = CreationArray(array);
+PrintArray(array);
 System.Console.WriteLine();
-SearchForMax(array);
+(int firstMax, int secondMax) = SearchForMax(array);
+PrintMaxes(firstMax, secondMax);

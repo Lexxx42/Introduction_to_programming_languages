@@ -5,8 +5,10 @@
 3 4 5
 3+5=8, 1+2+3=6, 8-6=2 */
 
+const int MIN = 0;
+const int MAX = 10;
 
-int Prompt(string message)
+int Prompt(string message) // Input values.
 {
     Console.Write(message);
     bool isDigit = int.TryParse(Console.ReadLine(), out int number);
@@ -17,82 +19,78 @@ int Prompt(string message)
     throw new Exception("You didn't enter a number");
 }
 
-void PrintArray(int[,] matr)
+void PrintArray(int[,] matrix) // Prints matrix.
 {
-    for (int i = 0; i < matr.GetLength(0); i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for (int j = 0; j < matr.GetLength(1); j++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            System.Console.Write($"{matr[i, j]} ");
+            System.Console.Write($"{matrix[i, j]} ");
         }
         System.Console.WriteLine();
     }
 }
 
-void FillArray(int[,] matr)
+void FillArray(int[,] matrix) // Fills the matrix with random values.
 {
-    for (int i = 0; i < matr.GetLength(0); i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for (int j = 0; j < matr.GetLength(1); j++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matr[i, j] = new Random().Next(1, 10);
+            matrix[i, j] = new Random().Next(MIN, MAX);
         }
     }
 }
 
-int SumMaxRow(int[,] matr)
+int SumMaxRow(int[,] matrix) // Finds sum of row's maximums.
 {
-    int sum = 0;
-    for (int i = 0; i < matr.GetLength(0); i++)
+    int sumMaxRow = 0;
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        int maxRow = matr[i, 0];
-        for (int j = 0; j < matr.GetLength(1); j++)
+        int maxRow = matrix[i, 0];
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (matr[i, j] > maxRow)
+            if (matrix[i, j] > maxRow)
             {
-                maxRow = matr[i, j];
+                maxRow = matrix[i, j];
             }
         }
-        sum += maxRow;
+        sumMaxRow += maxRow;
     }
-    return sum;
+    return sumMaxRow;
 }
 
-int SumMinCol(int[,] matr)
+int SumMinColumn(int[,] matrix) // Finds sum of column minimums.
 {
-    int sum = 0;
-    for (int i = 0; i < matr.GetLength(0); i++)
+    int sumMinColumn = 0;
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        int minCol = matr[0, i];
-        for (int j = 0; j < matr.GetLength(1); j++)
+        int minColumn = matrix[0, i];
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (matr[j, i] < minCol)
+            if (matrix[j, i] < minColumn)
             {
-                minCol = matr[j, i];
+                minColumn = matrix[j, i];
             }
         }
-        sum += minCol;
+        sumMinColumn += minColumn;
     }
-    return sum;
+    return sumMinColumn;
 }
 
-int MaxMinusMin(int max, int min)
+int MaxMinusMin(int max, int min) // Finds the difference between max and min.
 {
     return max - min;
 }
 
-bool Validation(int length)
+bool Validation(int length) // Check the length of cubic matrix.
 {
-    if (length <= 0)
-    {
-        return false;
-    }
-    return true;
+    return length <= 0;
 }
 
-void Result(int length, int[,] matrix)
+void DiffSumMaxRowSumMinColumn(int length, int[,] matrix) // Finds the difference between sum maximums of rows and sum minimums of columns.
 {
-    if (Validation(length) == false)
+    if (Validation(length))
     {
         System.Console.WriteLine("Length can't be less or equal to zero!");
     }
@@ -101,18 +99,18 @@ void Result(int length, int[,] matrix)
         FillArray(matrix);
         PrintArray(matrix);
         int sumMaxRow = SumMaxRow(matrix);
-        int sumMinCol = SumMinCol(matrix);
+        int sumMinColumn = SumMinColumn(matrix);
         System.Console.WriteLine();
         System.Console.WriteLine($"Sum of max for rows = {sumMaxRow}");
         System.Console.WriteLine();
-        System.Console.WriteLine($"Sum of min for columns = {sumMinCol}");
+        System.Console.WriteLine($"Sum of min for columns = {sumMinColumn}");
         System.Console.WriteLine();
-        System.Console.WriteLine($"SumMax - SumMin = {MaxMinusMin(sumMaxRow, sumMinCol)}");
+        System.Console.WriteLine($"SumMaxRows - SumMinColumns = {MaxMinusMin(sumMaxRow, sumMinColumn)}");
     }
 }
 
 
-
+Console.Clear();
 System.Console.WriteLine("This program finds the maximum value in the matrix for each row,"
 + " gets the sum of these maximums. Then finds the minimum value for each column,"
 + " gets the sum of these minima. Then from the first sum (with maximums) subtracts the second sum (with minimums)");
@@ -120,4 +118,4 @@ System.Console.WriteLine();
 int length = Prompt("Please enter length of cubic matrix: ");
 int[,] matrix = new int[length, length];
 System.Console.WriteLine();
-Result(length, matrix);
+DiffSumMaxRowSumMinColumn(length, matrix);

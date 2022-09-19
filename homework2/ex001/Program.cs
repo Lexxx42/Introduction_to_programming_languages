@@ -1,38 +1,44 @@
 ﻿// Задача 1: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
 
-int SearchForSecondNumber(int X)
+int Prompt(string message) // Input values.
 {
-    int p = 0;
-    X = X/10;
-    if(X > 0)
+    Console.Write(message);
+    bool isDigit = int.TryParse(Console.ReadLine(), out int number);
+    if (isDigit)
     {
-        p = X%10;
+        return number;
+    }
+    throw new Exception("You didn't enter a number");
+}
+
+bool Validation(int numberForCheck) // Check if number is 3-digit.
+{
+    return Math.Abs(numberForCheck) > 99 & Math.Abs(numberForCheck) < 1000;
+}
+
+int SearchForSecondNumber(int number) // Finds a second digit in number.
+{
+    number = Math.Abs(number);
+    int secondDigit = 0;
+    number = number / 10;
+    secondDigit = number % 10;
+    return secondDigit;
+}
+
+void PrintResult(int threeDigitNumber) // Prints second digit or exception.
+{
+    if (Validation(threeDigitNumber))
+    {
+        System.Console.WriteLine($"2nd digit is {SearchForSecondNumber(threeDigitNumber)}");
     }
     else
     {
-        p = -X%10;
+        System.Console.WriteLine("Your number have to be a three-digit number!");
     }
-    return p;
 }
 
-int Prompt(string message)
-{
-    System.Console.Write(message);        // Вывод приглашения
-    string strValue;                      // Объявление переменной для ввода строки
-    strValue = Console.ReadLine() ?? "0"; // Вводим строку с консоли (с консоли можно ввести только строку)
-    int value = int.Parse(strValue);      // Преобразование строки в целое число
-    return value;
-}
 
+Console.Clear();
 System.Console.WriteLine("This program takes a three-digit number as input and outputs the second digit of that number.");
-int value = Prompt("Please, enter some three-digit number > ");
-
-
-if((Math.Abs(value)>99 & Math.Abs(value)<1000))
-{
-System.Console.WriteLine($"2nd digit is {SearchForSecondNumber(value)}");
-}
-else
-{
-    System.Console.WriteLine("Your number have to be a three-digit number!");
-}
+int inputNumber = Prompt("Please, enter some three-digit number > ");
+PrintResult(inputNumber);

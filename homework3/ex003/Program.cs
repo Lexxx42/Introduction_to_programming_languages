@@ -3,38 +3,33 @@
 // 3 -> 1, 8, 27
 // 5 -> 1, 8, 27, 64, 125
 
-System.Console.WriteLine("This program takes a number (N - natural) as input and produces a table of cubes of numbers from 1 to N.");
-
-int Prompt(string message)
+int Prompt(string message) // Input values.
 {
-    System.Console.Write(message);
-    return Convert.ToInt32(Console.ReadLine());
+    Console.Write(message);
+    bool isDigit = int.TryParse(Console.ReadLine(), out int number);
+    if (isDigit)
+    {
+        return number;
+    }
+    throw new Exception("You didn't enter a number");
 }
 
-bool Validation(int numberForCheck)
+bool Validation(int numberForCheck) // Check for number is natural or not.
 {
-    if (numberForCheck > 0)
-    {
-        return true;
-    }
-    else
-    {
-        System.Console.WriteLine("Number has to be natural!");
-        return false;
-    }
+    return numberForCheck > 0;
 }
 
-int[] MakeCubes(int inputNumber)
+double[] MakeCubes(int length) // Produce cubes in a segment.
 {
-    int[] results = new int[inputNumber];
+    double[] results = new double[length];
     for (int i = 0; i < results.Length; i++)
     {
-        results[i] = (i+1)*(i+1)*(i+1); // why MathPow((i+1),3) not working?
+        results[i] = Math.Pow((i + 1), 3);
     }
     return results;
 }
 
-void Print(int[] inputForPrint)
+void Print(double[] inputForPrint) // Prints array.
 {
     for (int i = 0; i < inputForPrint.Length; i++)
     {
@@ -42,9 +37,21 @@ void Print(int[] inputForPrint)
     }
 }
 
-int numberInput = Prompt("Please, enter the number > ");
-if (Validation(numberInput))
+void PrintCubes(int number) // Prints cubes in a segment or exception.
 {
-    int[] results = MakeCubes(numberInput);
-    Print(results);
+    if (Validation(number))
+    {
+        double[] results = MakeCubes(number);
+        Print(results);
+    }
+    else
+    {
+        System.Console.WriteLine("Number has to be natural!");
+    }
 }
+
+
+Console.Clear();
+System.Console.WriteLine("This program takes a number (N - natural) as input and produces a table of cubes of numbers from 1 to N.");
+int numberInput = Prompt("Please, enter the number > ");
+PrintCubes(numberInput);

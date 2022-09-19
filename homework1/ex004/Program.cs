@@ -1,88 +1,50 @@
 ﻿// Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
-// Целые числа
+// Целые числа.
 
-int Prompt(string message)
+int Prompt(string message) // Input values.
 {
-    System.Console.Write(message);        // Вывод приглашения
-    string strValue;                      // Объявление переменной для ввода строки
-    strValue = Console.ReadLine() ?? "0"; // Вводим строку с консоли (с консоли можно ввести только строку), если ничего не ввели, то = 0 
-    int value = int.Parse(strValue);      // Преобразование строки в целое число
-    return value;
+    Console.Write(message);
+    bool isDigit = int.TryParse(Console.ReadLine(), out int number);
+    if (isDigit)
+    {
+        return number;
+    }
+    throw new Exception("You didn't enter a number");
 }
+
+bool Validation(int numberForCheck) // Segment's length check.
+{
+    return numberForCheck == 1;
+}
+
+void PrintSegment(int segmentEnd) // Prints all even numbers in segment.
+{
+    if (segmentEnd > 0 && !Validation(segmentEnd))
+    {
+        System.Console.Write($"Even numbers in segment (1, {segmentEnd}]: ");
+        System.Console.Write("2");
+        for (int i = 4; i <= segmentEnd; i += 2)
+        {
+            System.Console.Write($", {i}");
+        }
+    }
+    else if (segmentEnd <= 0 && !Validation(segmentEnd))
+    {
+        System.Console.Write($"Even numbers in segment [{segmentEnd}, 1): ");
+        System.Console.Write("0");
+        for (int i = 2; i <= Math.Abs(segmentEnd); i += 2)
+        {
+            System.Console.Write($", {-i}");
+        }
+    }
+    else
+    {
+        System.Console.Write($"There is nothing between 1 and 1");
+    }
+}
+
+
 Console.Clear();
-System.Console.WriteLine("This program takes a number (N) and returns all even numbers from 1 to N");
-int number = Prompt("please enter a number > ");
-if(number == 1) 
-{
-    System.Console.Write($"there is nothing between 1 and 1");
-}
-
-if(number>0)
-{
-    for (int i = 1; i <= number; i++)
-    {
-        if(i%2 == 0)
-        {
-                if(i==number-1) 
-                {
-                    System.Console.Write($"{i}");
-                }
-                else
-                { 
-                if(i==number) 
-                {
-                    System.Console.Write($"{i}");
-                } 
-                else 
-                {
-                    System.Console.Write($"{i}, ");
-                }
-                }
-            
-            //System.Console.Write($"{i}, ");
-        }
-        
-    }
-}
-else
-{
-    if(number == 0) 
-    {
-        System.Console.Write($"0");
-    }
-    else 
-    {
-        System.Console.Write($"0, ");
-        for ( int i = 1; i <= -number; i++)
-        {
-            if(i%2 == 0)
-            {
-                 if(i==-number-1) 
-                {
-                    System.Console.Write($"{-i}");
-                }
-                else
-                { 
-                if(i==-number) 
-                {
-                    System.Console.Write($"{-i}");
-                } 
-                else 
-                {
-                    System.Console.Write($"{-i}, ");
-                }
-                }
-                
-                //System.Console.Write($"-{i}, ");
-            }
-            
-        }
-    }
-}
-
-//чет не работает с отрицательными, при вводе 0 и 1 выдает 2, что за пределами!
-// но цикл круче, согласен. Нужно адаптировать!
-// System.Console.Write("2");
-//     for (int i = 4; i <= number; i+=2){
-//         System.Console.Write($", {i}");
-//     }
+System.Console.WriteLine("This program takes a number (N) and returns all even numbers from (1 to N]");
+int number = Prompt("Please enter a number, which will be a segment's end > ");
+PrintSegment(number);

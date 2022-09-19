@@ -66,7 +66,7 @@ void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result o
         {
 
             int foundValue = SearchNumbersValue(generatedMatrix, rowPosition, columnPosition);
-            System.Console.WriteLine($"found value = {foundValue}");
+            System.Console.WriteLine($"Found value = {foundValue}");
         }
     }
 }
@@ -98,6 +98,7 @@ int SearchNumbersValue(int[,] matrix, int rowPosition, int columnPosition) // Se
 }
 
 
+Console.Clear();
 System.Console.WriteLine("This program generates random array filled with whole numbers, from MIN to MAX."
 +" User inputs row position and column position for search withing the matrix. Program returns the value from matrix");
 System.Console.WriteLine();
@@ -105,4 +106,3 @@ int numberOfRows = Prompt("Please enter the number of rows: ");
 int numberOfColumns = Prompt("Please enter the number of columns: ");
 System.Console.WriteLine();
 ResultOfGeneration(numberOfRows, numberOfColumns);
-

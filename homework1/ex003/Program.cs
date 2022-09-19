@@ -1,23 +1,31 @@
 ﻿// Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
-// примеры к задаче с целыми числами, следовательно с ними и будем работать
+// Примеры к задаче с целыми числами, следовательно с ними и будем работать.
 
-int Prompt(string message)
+int Prompt(string message) // Input values.
 {
-    System.Console.Write(message);        // Вывод приглашения
-    string strValue;                      // Объявление переменной для ввода строки
-    strValue = Console.ReadLine() ?? "0"; // Вводим строку с консоли (с консоли можно ввести только строку), если ничего не ввели, то = 0 
-    int value = int.Parse(strValue);      // Преобразование строки в целое число
-    return value;
+    Console.Write(message);
+    bool isDigit = int.TryParse(Console.ReadLine(), out int number);
+    if (isDigit)
+    {
+        return number;
+    }
+    throw new Exception("You didn't enter a number");
 }
+
+void CheckForEven(int numberForCheck) // Checking the number for even.
+{
+    if (numberForCheck % 2 == 0)
+    {
+        System.Console.WriteLine($"number {numberForCheck} is even");
+    }
+    else
+    {
+        System.Console.WriteLine($"number {numberForCheck} is not even");
+    }
+}
+
+
 Console.Clear();
 System.Console.WriteLine("This program takes a number and returns whether the number is even or not");
-
-int number = Prompt("please enter a number > ");
-if(number%2 == 0)
-{
-    System.Console.WriteLine($"number {number} is even");
-}
-else
-{
-    System.Console.WriteLine($"number {number} is not even");
-}
+int number = Prompt("Please enter a number > ");
+CheckForEven(number);

@@ -1,26 +1,42 @@
 ﻿// Задача 2: Напишите программу, которая выводит случайное трёхзначное число и удаляет вторую цифру этого числа.
 
-void ThreeDigitNumberWithoutMiddle(int X)
-{
-    int result = -1;
-    if(X==0) {result = new Random().Next(100,1000);}
-    if(X==1) {result = new Random().Next(-999,-101);} //ошибка! нельзя включать -1000!
+const int MIN = -200;
+const int MAX = -100;
 
-    System.Console.WriteLine($"Our random number is > {result}");
-    int last_digit = result;
-    int first_digit = result;
-    if(result > 0)
+int NumberGeneration() // Generates random number.
+{
+    return new Random().Next(MIN, MAX);
+}
+
+(int, int) SearchForFirstSecondDigit(int numberForSearch) // Searches for first and second digit in number.
+{
+    numberForSearch = Math.Abs(numberForSearch);
+    int lastDigit = numberForSearch;
+    int firstDigit = numberForSearch;
+    lastDigit = numberForSearch % 10;
+    while (firstDigit >= 10)
     {
-        last_digit = result%10;
-        while (first_digit > 10) { first_digit /= 10; }
+        firstDigit /= 10;
+    }
+    return (firstDigit, lastDigit);
+}
+
+void PrintNumberWithoutSecondDigit(int number) // Prints the number without 2-nd digit.
+{
+    (int firstDigit, int thirdDigit) = SearchForFirstSecondDigit(number);
+    if (number > 0)
+    {
+        System.Console.WriteLine($"Number without second digit is > {firstDigit}{thirdDigit}");
     }
     else
     {
-        last_digit = -result%10;
-        while (first_digit < -10) { first_digit /= 10; }
+        System.Console.WriteLine($"Number without second digit is > {-firstDigit}{thirdDigit}");
     }
-    System.Console.WriteLine($"Number without middle digit is {first_digit}{last_digit}");
 }
-System.Console.WriteLine("This program prints a random three-digit number and removes the second digit of this number");
-ThreeDigitNumberWithoutMiddle(new Random().Next(0,2));
 
+
+Console.Clear();
+System.Console.WriteLine("This program prints a random three-digit number and removes the second digit of this number");
+int numberGenerated = NumberGeneration();
+System.Console.WriteLine($"Generated number is > {numberGenerated}");
+PrintNumberWithoutSecondDigit(numberGenerated);

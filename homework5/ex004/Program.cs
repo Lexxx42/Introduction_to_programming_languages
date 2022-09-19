@@ -1,19 +1,8 @@
 ﻿// Задача со звездочкой: Сформировать массив четной длины с парами элементов, каждого элемента должно быть в паре,
 // 1,1,2,3,3,2,4,5,4,5
+// I did it with user input.
 
-
-
-// (int, int) SumAll(int[] array)
-// {
-//     return (SumElements(array), SumElements(array, NEGATIVE_VALUE));
-// }
-// (int sumPlus, int sumMinus) = SumAll(array);
-// System.Console.WriteLine($"{sumPlus}, {sumMinus}");
-
-
-
-
-int Prompt(string message)
+int Prompt(string message) // Input values.
 {
     Console.Write(message);
     bool isDigit = int.TryParse(Console.ReadLine(), out int number);
@@ -24,8 +13,7 @@ int Prompt(string message)
     throw new Exception("You didn't entered the number!");
 }
 
-
-(int, int) InputValuesToArray(string message)
+(int, int) InputValuesToArray(string message) // Input pair.
 {
     Console.Write(message);
     System.Console.WriteLine();
@@ -38,8 +26,7 @@ int Prompt(string message)
     throw new Exception("You didn't entered the number OR number isn't integer!");
 }
 
-
-void PrintArray((int, int)[] array)
+void PrintArray((int, int)[] array) // Print array.
 {
     System.Console.WriteLine();
     for (int i = 0; i < array.Length; i++)
@@ -49,20 +36,32 @@ void PrintArray((int, int)[] array)
     System.Console.WriteLine();
 }
 
-
-bool Validation(int length)
+int Validation(int length) // Validation of array's length.
 {
-    if (length < 0) { return false; }
-    return true;
+    if (length < 0)
+    {
+        return -1;
+    }
+    else if (length == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
 }
 
-
-
-System.Console.WriteLine("User enters an array of even length with pairs of elements, each element must be in a pair.");
-int length = Prompt("Please enter array's length > ");
-if (Validation(length) == true)
+void PrintSequence(int length) // Prints coupled pairs of user input.
 {
-    if (length == 0) { System.Console.WriteLine("Your array has no elements!"); }
+    if (Validation(length) == 0)
+    {
+        System.Console.WriteLine("Your array has no elements!");
+    }
+    else if (Validation(length) == -1)
+    {
+        System.Console.WriteLine("Length can't be negative!");
+    }
     else
     {
         (int, int)[] array = new (int, int)[length];
@@ -74,7 +73,9 @@ if (Validation(length) == true)
         PrintArray(array);
     }
 }
-else
-{
-    System.Console.WriteLine("Length can't be negative!");
-}
+
+
+Console.Clear();
+System.Console.WriteLine("User enters an array of even length with pairs of elements, each element must be in a pair.");
+int length = Prompt("Please enter array's length > ");
+PrintSequence(length);
