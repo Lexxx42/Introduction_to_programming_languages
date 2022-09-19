@@ -43,12 +43,12 @@ void FillArray(int[,] matrixGenerated) // Matrix generation.
     }
 }
 
-bool Validation(int numberOfRows, int numberOfColumns) // Check input values.
+bool Validation(int numberOfRows, int numberOfColumns) // Check input values. - так же убрал как злишнее
 {
     return (numberOfRows > 0 && numberOfColumns > 0);
 }
 
-void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result of generation.
+void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result of generation. - кажется снова переполненным.
 {
     if (!Validation(numberOfRows, numberOfColumns))
     {
@@ -68,7 +68,7 @@ void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result o
     }
 }
 
-int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates and prints matrix.
+int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates and prints matrix. - вводит в заблуждение генерирует и печатает - а в назании гененрирует
 {
     int[,] matrix = new int[numberOfRows, numberOfColumns];
     FillArray(matrix);
