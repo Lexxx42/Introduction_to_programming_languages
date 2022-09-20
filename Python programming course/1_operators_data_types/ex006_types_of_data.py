@@ -37,4 +37,4 @@ print(type(7.0))
 
 number = float(0.2)
 if number == 0.2:
-    print("number")
+    print(float("0.2"))
