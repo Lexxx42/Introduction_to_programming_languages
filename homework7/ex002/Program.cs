@@ -20,7 +20,7 @@ int Prompt(string message) // Input values.
     throw new Exception("You didn't enter a number");
 }
 
-void PrintArray(int[,] matrixForPrint) // Print matrix.
+void PrintMatrix(int[,] matrixForPrint) // Print matrix.
 {
     for (int i = 0; i < matrixForPrint.GetLength(0); i++)
     {
@@ -32,7 +32,7 @@ void PrintArray(int[,] matrixForPrint) // Print matrix.
     }
 }
 
-void FillArray(int[,] matrixGenerated) // Matrix generation.
+void FillMatrix(int[,] matrixGenerated) // Fills matrix with random numbers.
 {
     for (int i = 0; i < matrixGenerated.GetLength(0); i++)
     {
@@ -43,39 +43,10 @@ void FillArray(int[,] matrixGenerated) // Matrix generation.
     }
 }
 
-bool Validation(int numberOfRows, int numberOfColumns) // Check input values.
-{
-    return (numberOfRows > 0 && numberOfColumns > 0);
-}
-
-void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result of generation.
-{
-    if (!Validation(numberOfRows, numberOfColumns))
-    {
-        System.Console.WriteLine("Length can't be less or equal to zero!");
-    }
-    else
-    {
-        int[,] generatedMatrix = GenerateMatrix(numberOfRows, numberOfColumns);
-        (int rowPosition, int columnPosition) = InputNumbersCoordinates();
-        if (ValidationPosition(generatedMatrix, rowPosition, columnPosition))
-        {
-            System.Console.WriteLine("There is no such element within the matrix!");
-        }
-        else
-        {
-
-            int foundValue = SearchNumbersValue(generatedMatrix, rowPosition, columnPosition);
-            System.Console.WriteLine($"Found value = {foundValue}");
-        }
-    }
-}
-
-int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates and prints matrix.
+int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates matrix.
 {
     int[,] matrix = new int[numberOfRows, numberOfColumns];
-    FillArray(matrix);
-    PrintArray(matrix);
+    FillMatrix(matrix);
     return matrix;
 }
 
@@ -86,21 +57,37 @@ int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates and pr
     return (rowPosition, columnPosition);
 }
 
-bool ValidationPosition(int[,] matrix, int rowPosition, int columnPosition) // Validation of search query.
-{
-    return matrix.GetLength(0) < rowPosition || matrix.GetLength(1) < columnPosition || rowPosition < 1 || columnPosition < 1;
-}
-
-
 int SearchNumbersValue(int[,] matrix, int rowPosition, int columnPosition) // Search for value in position.
 {
     return matrix[rowPosition - 1, columnPosition - 1];
 }
 
+void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result of generation.
+{
+    if (!(numberOfRows > 0 && numberOfColumns > 0))
+    {
+        System.Console.WriteLine("Length can't be less or equal to zero!");
+    }
+    else
+    {
+        int[,] generatedMatrix = GenerateMatrix(numberOfRows, numberOfColumns);
+        PrintMatrix(generatedMatrix);
+        (int rowPosition, int columnPosition) = InputNumbersCoordinates();
+        if (generatedMatrix.GetLength(0) < rowPosition || generatedMatrix.GetLength(1) < columnPosition || rowPosition < 1 || columnPosition < 1)
+        {
+            System.Console.WriteLine("There is no such element within the matrix!");
+        }
+        else
+        {
+            int foundValue = SearchNumbersValue(generatedMatrix, rowPosition, columnPosition);
+            System.Console.WriteLine($"Found value = {foundValue}");
+        }
+    }
+}
 
 Console.Clear();
 System.Console.WriteLine("This program generates random array filled with whole numbers, from MIN to MAX."
-+" User inputs row position and column position for search withing the matrix. Program returns the value from matrix");
++ " User inputs row position and column position for search withing the matrix. Program returns the value from matrix");
 System.Console.WriteLine();
 int numberOfRows = Prompt("Please enter the number of rows: ");
 int numberOfColumns = Prompt("Please enter the number of columns: ");

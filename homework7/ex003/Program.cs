@@ -1,5 +1,4 @@
 ﻿/* Задача 3. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
-
 Например, задан массив:
 1 4 7 2
 5 9 2 3
@@ -20,7 +19,18 @@ int Prompt(string message) // Input values.
     throw new Exception("You didn't enter a number");
 }
 
-void PrintArray(int[,] matrixForPrint) // Print matrix.
+void FillMatrix(int[,] matrixGenerated) // Fills matrix with random numbers.
+{
+    for (int i = 0; i < matrixGenerated.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrixGenerated.GetLength(1); j++)
+        {
+            matrixGenerated[i, j] = new Random().Next(MIN, MAX + 1);
+        }
+    }
+}
+
+void PrintMatrix(int[,] matrixForPrint) // Print matrix.
 {
     for (int i = 0; i < matrixForPrint.GetLength(0); i++)
     {
@@ -32,51 +42,14 @@ void PrintArray(int[,] matrixForPrint) // Print matrix.
     }
 }
 
-void FillArray(int[,] matrixGenerated) // Matrix generation.
-{
-    for (int i = 0; i < matrixGenerated.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrixGenerated.GetLength(1); j++)
-        {
-            matrixGenerated[i, j] = new Random().Next(MIN, MAX + 1);
-        }
-    }
-}
-
-bool Validation(int numberOfRows, int numberOfColumns) // Check input values.
-{
-    return (numberOfRows > 0 && numberOfColumns > 0);
-}
-
-void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result of generation.
-{
-    if (!Validation(numberOfRows, numberOfColumns))
-    {
-        System.Console.WriteLine("Length can't be less or equal to zero!");
-    }
-    else
-    {
-        int[,] generatedMatrix = GenerateMatrix(numberOfRows, numberOfColumns);
-        System.Console.WriteLine("Average for each column:");
-        System.Console.WriteLine();
-        var answer = SumAverageColumn(generatedMatrix);
-        foreach (double item in answer)
-        {
-            System.Console.Write($"{item:f2}\t");
-        }
-
-    }
-}
-
-int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates and prints matrix.
+int[,] GenerateMatrix(int numberOfRows, int numberOfColumns) // Generates matrix.
 {
     int[,] matrix = new int[numberOfRows, numberOfColumns];
-    FillArray(matrix);
-    PrintArray(matrix);
+    FillMatrix(matrix);
     return matrix;
 }
 
-List<double> SumAverageColumn(int[,] matrix) // List with averages.
+List<double> SumAverageColumn(int[,] matrix) // Forming list with averages of columns.
 {
     var answer = new List<double>();
     for (int i = 0; i < matrix.GetLength(1); i++)
@@ -90,6 +63,27 @@ List<double> SumAverageColumn(int[,] matrix) // List with averages.
         answer.Add(avrCol);
     }
     return answer;
+}
+
+void ResultOfGeneration(int numberOfRows, int numberOfColumns) // Print result of generation.
+{
+    if (!(numberOfRows > 0 && numberOfColumns > 0))
+    {
+        System.Console.WriteLine("Length can't be less or equal to zero!");
+    }
+    else
+    {
+        int[,] generatedMatrix = GenerateMatrix(numberOfRows, numberOfColumns);
+        PrintMatrix(generatedMatrix);
+        System.Console.WriteLine("Average for each column:");
+        System.Console.WriteLine();
+        var answer = SumAverageColumn(generatedMatrix);
+        foreach (double item in answer)
+        {
+            System.Console.Write($"{item:f2}\t");
+        }
+
+    }
 }
 
 

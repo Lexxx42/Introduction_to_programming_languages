@@ -18,7 +18,7 @@ int Prompt(string message) // Input values.
     throw new Exception("You didn't enter a number");
 }
 
-void PrintArray(double[,] matrixForPrint) // Print matrix.
+void PrintMatrix(double[,] matrixForPrint) // Print matrix.
 {
     for (int i = 0; i < matrixForPrint.GetLength(0); i++)
     {
@@ -30,7 +30,7 @@ void PrintArray(double[,] matrixForPrint) // Print matrix.
     }
 }
 
-void FillArray(double[,] matrixGenerated) // Matrix generation.
+void FillMatrix(double[,] matrixGenerated) // Fills matrix with random numbers.
 {
     for (int i = 0; i < matrixGenerated.GetLength(0); i++)
     {
@@ -41,22 +41,17 @@ void FillArray(double[,] matrixGenerated) // Matrix generation.
     }
 }
 
-bool Validation(int numberOfRows, int numberOfColumns) // Check input values.
+void PrintGeneratedMatrix(int numberOfRows, int numberOfColumns) // Print generated matrix.
 {
-    return (numberOfRows > 0 && numberOfColumns > 0);
-}
-
-void Result(int numberOfRows, int numberOfColumns) // Print result.
-{
-    if (!Validation(numberOfRows, numberOfColumns))
+    if (!(numberOfRows > 0 && numberOfColumns > 0))
     {
         System.Console.WriteLine("Length can't be less or equal to zero!");
     }
     else
     {
         double[,] matrix = new double[numberOfRows, numberOfColumns];
-        FillArray(matrix);
-        PrintArray(matrix);
+        FillMatrix(matrix);
+        PrintMatrix(matrix);
     }
 }
 
@@ -67,4 +62,4 @@ System.Console.WriteLine();
 int numberOfRows = Prompt("Please enter the number of rows: ");
 int numberOfColumns = Prompt("Please enter the number of columns: ");
 System.Console.WriteLine();
-Result(numberOfRows, numberOfColumns);
+PrintGeneratedMatrix(numberOfRows, numberOfColumns);

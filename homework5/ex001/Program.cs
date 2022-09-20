@@ -86,4 +86,4 @@ void PrintCountEvenNumbers(int length) // Print count of even numbers in array.
 Console.Clear();
 System.Console.WriteLine("This program fills an array filled with random positive three-digit numbers. And will show the number of even numbers in the array");
 int length = Prompt("Please enter array's length > ");
-PrintEvenNumbers(length);
+PrintCountEvenNumbers(length);
