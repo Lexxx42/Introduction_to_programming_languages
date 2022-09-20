@@ -35,3 +35,6 @@ print((0.3+0.3+0.3)-(0.9))
 print(type(7))
 print(type(7.0))
 
+number = float(0.2)
+if number == 0.2:
+    print("number")
