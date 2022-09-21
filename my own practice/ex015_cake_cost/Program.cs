@@ -2,7 +2,6 @@
 // На вход 3 числа: рубли, копейки и количество пирожков. На выходе 2 числа: рубли и копейки.
 
 
-System.Console.WriteLine("This program count quantity (N) of cakes you can buy for A rub and B copeeck");
 
 int Prompt(string message)
 {
@@ -37,6 +36,7 @@ int Prompt(string message)
 
 
 
+System.Console.WriteLine("This program count quantity (N) of cakes you can buy for A rub and B copeeck");
 int a = Prompt("enter cake cost rub: ");
 int b = Prompt("enter cake cost cop: ");
 int cake = Prompt("how much cakes do you want? ");
