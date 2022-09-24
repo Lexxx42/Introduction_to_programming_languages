@@ -71,4 +71,11 @@ void PrintMatrix(int[,] matrix) // Matrix print.
 
 int cubicMatrixLength = Prompt("Enter cubic matrix length > ");
 System.Console.WriteLine();
-PrintMatrix(SpiralFillMatrix(cubicMatrixLength));
+if (cubicMatrixLength <= 0)
+{
+    System.Console.WriteLine("Length can't be less or equal to zero!");
+}
+else
+{
+    PrintMatrix(SpiralFillMatrix(cubicMatrixLength));
+}
