@@ -62,6 +62,21 @@ int[,] SortRowsAscending(int[,] matrix) // Sort rows in matrix in ascending orde
     return matrix;
 }
 
+void PrintSortedMatrix(int matrixRows, int matrixColumns, int minValueGenerated, int maxValueGenerated) // Prints matrix with sorted rows.
+{
+    if (matrixRows <= 0 || matrixColumns <= 0)
+    {
+        System.Console.WriteLine("Number of columns and rows must be greater than zero!");
+    }
+    else
+    {
+        int[,] generatedMatrix = GenerateMatrix(matrixRows, matrixColumns, minValueGenerated, maxValueGenerated);
+        PrintMatrix(generatedMatrix);
+        PrintMatrix(SortRowsAscending(generatedMatrix));
+    }
+}
+
+
 Console.Clear();
 System.Console.WriteLine("This program generates a matrix. Sorts rows in matrix in ascending order.");
 System.Console.WriteLine();
@@ -71,13 +86,4 @@ int matrixColumns = 3;
 int minValueGenerated = 0;
 int maxValueGenerated = 9;
 
-if (matrixRows <= 0 || matrixColumns <= 0)
-{
-    System.Console.WriteLine("Number of columns and rows must be greater than zero!");
-}
-else
-{
-    int[,] generatedMatrix = GenerateMatrix(matrixRows, matrixColumns, minValueGenerated, maxValueGenerated);
-    PrintMatrix(generatedMatrix);
-    PrintMatrix(SortRowsAscending(generatedMatrix));
-}
+PrintSortedMatrix(matrixRows, matrixColumns, minValueGenerated, maxValueGenerated);
