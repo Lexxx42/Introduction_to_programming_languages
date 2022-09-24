@@ -34,7 +34,7 @@ void PrintMatrix(int[,] matrix) // Matrix print.
     System.Console.WriteLine();
 }
 
-int[,] MatrixMultiplication(int[,] firstMatrix, int[,] secondMatrix)
+int[,] MatrixMultiplication(int[,] firstMatrix, int[,] secondMatrix) // Multiplies first matrix with second one.
 {
     int[,] matrix = new int[firstMatrix.GetLength(0), secondMatrix.GetLength(1)];
     for (int i = 0; i < firstMatrix.GetLength(0); i++)
@@ -50,6 +50,7 @@ int[,] MatrixMultiplication(int[,] firstMatrix, int[,] secondMatrix)
     return matrix;
 }
 
+// Prints the result of multiplication of matrices.
 void PrintMultiplication(int firstMatrixRows, int firstMatrixColumns, int secondMatrixRows, int secondMatrixColumns, int minValueGenerated, int maxValueGenerated)
 {
     if ((firstMatrixRows > 0 || firstMatrixColumns > 0) && (secondMatrixRows > 0 || secondMatrixColumns > 0) && firstMatrixColumns == secondMatrixRows)
@@ -76,14 +77,13 @@ void PrintMultiplication(int firstMatrixRows, int firstMatrixColumns, int second
 }
 
 
-
-
 Console.Clear();
 System.Console.WriteLine("This program generates a matrix. Prints the row of matrix with lowest sum of elements.");
 System.Console.WriteLine();
 
 int firstMatrixRows = 3;
 int firstMatrixColumns = 2;
+
 int secondMatrixRows = 2;
 int secondMatrixColumns = 2;
 
