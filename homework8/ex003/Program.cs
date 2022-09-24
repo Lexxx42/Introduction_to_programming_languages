@@ -53,7 +53,7 @@ int[,] MatrixMultiplication(int[,] firstMatrix, int[,] secondMatrix) // Multipli
 // Prints the result of multiplication of matrices.
 void PrintMultiplication(int firstMatrixRows, int firstMatrixColumns, int secondMatrixRows, int secondMatrixColumns, int minValueGenerated, int maxValueGenerated)
 {
-    if ((firstMatrixRows > 0 || firstMatrixColumns > 0) && (secondMatrixRows > 0 || secondMatrixColumns > 0) && firstMatrixColumns == secondMatrixRows)
+    if ((firstMatrixRows > 0 && firstMatrixColumns > 0) && (secondMatrixRows > 0 && secondMatrixColumns > 0) && firstMatrixColumns == secondMatrixRows)
     {
         int[,] firstMatrix = GenerateMatrix(firstMatrixRows, firstMatrixColumns, minValueGenerated, maxValueGenerated);
         System.Console.WriteLine("First matrix:");
@@ -66,7 +66,7 @@ void PrintMultiplication(int firstMatrixRows, int firstMatrixColumns, int second
         PrintMatrix(multiplication);
 
     }
-    else if ((firstMatrixRows <= 0 || firstMatrixColumns <= 0) && (secondMatrixRows <= 0 || secondMatrixColumns <= 0))
+    else if ((firstMatrixRows <= 0 || firstMatrixColumns <= 0) || (secondMatrixRows <= 0 || secondMatrixColumns <= 0))
     {
         System.Console.WriteLine("Number of columns and rows must be greater than zero!");
     }

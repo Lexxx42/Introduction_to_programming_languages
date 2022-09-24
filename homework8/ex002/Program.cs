@@ -54,7 +54,7 @@ int[] SumOfRow(int[,] matrix) // Finds sum of rows in matrix.
     return sumArray;
 }
 
-int FindMinIndexArray(int[] array) // Finds first index of minimum sum of elements in row.
+int FindMinArrayIndex(int[] array) // Finds first index of minimum sum of elements in row.
 {
     int min = array[0];
     int index = 0;
@@ -69,6 +69,7 @@ int FindMinIndexArray(int[] array) // Finds first index of minimum sum of elemen
     return index;
 }
 
+// Prints position of minimum sum of elements in a row.
 void FirstPositionOfMinSum(int matrixRows, int matrixColumns, int minValueGenerated, int maxValueGenerated)
 {
     if (matrixRows <= 0 || matrixColumns <= 0)
@@ -80,7 +81,7 @@ void FirstPositionOfMinSum(int matrixRows, int matrixColumns, int minValueGenera
         int[,] generatedMatrix = GenerateMatrix(matrixRows, matrixColumns, minValueGenerated, maxValueGenerated);
         PrintMatrix(generatedMatrix);
         int[] sumOfRows = SumOfRow(generatedMatrix);
-        System.Console.WriteLine($"The position of first row with minimum sum of elements is {FindMinIndexArray(sumOfRows) + 1}");
+        System.Console.WriteLine($"The position of first row with minimum sum of elements is {FindMinArrayIndex(sumOfRows) + 1}");
     }
 }
 
