@@ -121,6 +121,8 @@ void PrintArray(int[,] array)
     }
     System.Console.WriteLine();
 }
+
+
 int[,] numbers = GenerateArray(4, 0, 10);
 PrintArray(numbers);
 int searchNum = Prompt("Введите искомое число > ");
