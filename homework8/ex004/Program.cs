@@ -25,9 +25,9 @@ int Prompt(string message) // Input values.
     throw new Exception("You didn't enter a number");
 }
 
-int[,] SpiralFillMatrix(int Length) // Fills spirally the matrix.
+int[,] SpiralFillMatrix(int length) // Fills spirally the matrix.
 {
-    int[,] matrix = new int[Length, Length];
+    int[,] matrix = new int[length, length];
 
     int directionX = 1;
     int directionY = 0;
@@ -36,14 +36,14 @@ int[,] SpiralFillMatrix(int Length) // Fills spirally the matrix.
     int column = 0;
 
     int directionChanges = 0;
-    int steps = Length;
+    int steps = length;
 
     for (int i = 0; i < matrix.Length; i++)
     {
         matrix[row, column] = i + 1;
         if (--steps == 0)
         {
-            steps = Length * (directionChanges % 2) + Length * ((directionChanges + 1) % 2) - (directionChanges / 2 - 1) - 2;
+            steps = length * (directionChanges % 2) + length * ((directionChanges + 1) % 2) - (directionChanges / 2 - 1) - 2;
             int temp = directionX;
             directionX = -directionY;
             directionY = temp;
