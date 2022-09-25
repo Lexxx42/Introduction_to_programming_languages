@@ -25,7 +25,7 @@ int Prompt(string message) // Input values.
     throw new Exception("You didn't enter a number");
 }
 
-int[,] SpiralFillMatrix(int length) // Fills spirally the matrix.
+int[,] SpiralFillMatrix(int length) // Fills spirally a cubic matrix.
 {
     int[,] matrix = new int[length, length];
 
