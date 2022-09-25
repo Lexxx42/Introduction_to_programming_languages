@@ -38,23 +38,23 @@ void PrintMatrix(int[,] matrix) // Matrix print.
     System.Console.WriteLine();
 }
 
-int[,] SortRowsAscending(int[,] matrix) // Sort rows in matrix in ascending order.
+int[,] SortRowsDescending(int[,] matrix) // Sort rows in matrix in ascending order.
 {
-    int min = 0;
+    int max = 0;
     int temp = 0;
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            min = matrix[i, j];
+            max = matrix[i, j];
             for (int k = j + 1; k < matrix.GetLength(1); k++)
             {
-                if (matrix[i, k] < min)
+                if (matrix[i, k] > max)
                 {
                     temp = matrix[i, k];
-                    matrix[i, k] = min;
+                    matrix[i, k] = max;
                     matrix[i, j] = temp;
-                    min = temp;
+                    max = temp;
                 }
             }
         }
@@ -62,7 +62,7 @@ int[,] SortRowsAscending(int[,] matrix) // Sort rows in matrix in ascending orde
     return matrix;
 }
 
-void PrintSortedMatrix(int matrixRows, int matrixColumns, int minValueGenerated, int maxValueGenerated) // Prints matrix with sorted rows.
+void MainSequence(int matrixRows, int matrixColumns, int minValueGenerated, int maxValueGenerated) // Calls all other methods and prints results.
 {
     if (matrixRows <= 0 || matrixColumns <= 0)
     {
@@ -74,7 +74,7 @@ void PrintSortedMatrix(int matrixRows, int matrixColumns, int minValueGenerated,
         System.Console.WriteLine("Generated matrix:");
         PrintMatrix(generatedMatrix);
         System.Console.WriteLine("Sorted matrix:");
-        PrintMatrix(SortRowsAscending(generatedMatrix));
+        PrintMatrix(SortRowsDescending(generatedMatrix));
     }
 }
 
@@ -88,4 +88,4 @@ int matrixColumns = 3;
 int minValueGenerated = -5;
 int maxValueGenerated = 5;
 
-PrintSortedMatrix(matrixRows, matrixColumns, minValueGenerated, maxValueGenerated);
+MainSequence(matrixRows, matrixColumns, minValueGenerated, maxValueGenerated);
