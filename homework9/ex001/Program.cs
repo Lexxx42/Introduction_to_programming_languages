@@ -15,7 +15,9 @@ void ShowNaturalNumbers(int number) // Shows natural numbers from number to 1.
 }
 
 Console.Clear();
+
 System.Console.WriteLine("This program shows natural numbers from inputNumber to 1.");
 System.Console.WriteLine();
+
 int inputNumber = 10;
 ShowNaturalNumbers(inputNumber);
