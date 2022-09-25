@@ -56,13 +56,11 @@ int[] SumOfRow(int[,] matrix) // Finds sum of rows in matrix.
 
 int FindMinArrayIndex(int[] array) // Finds first index of minimum sum of elements in row.
 {
-    int min = array[0];
     int index = 0;
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i] < min)
+        if (array[i] < array[index])
         {
-            min = array[i];
             index = i;
         }
     }
