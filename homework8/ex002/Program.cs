@@ -69,7 +69,7 @@ int FindMinArrayIndex(int[] array) // Finds first index of minimum sum of elemen
     return index;
 }
 
-// Prints position of minimum sum of elements in a row.
+// Prints generated matrix and the position of minimum sum of elements in a row.
 void FirstPositionOfMinSum(int matrixRows, int matrixColumns, int minValueGenerated, int maxValueGenerated)
 {
     if (matrixRows <= 0 || matrixColumns <= 0)
@@ -79,7 +79,8 @@ void FirstPositionOfMinSum(int matrixRows, int matrixColumns, int minValueGenera
     else
     {
         int[,] generatedMatrix = GenerateMatrix(matrixRows, matrixColumns, minValueGenerated, maxValueGenerated);
-        PrintMatrix(generatedMatrix);
+        System.Console.WriteLine("Generated matrix:");
+        PrintMatrix(generatedMatrix); // Print matrix only for check.
         int[] sumOfRows = SumOfRow(generatedMatrix);
         System.Console.WriteLine($"The position of first row with minimum sum of elements is {FindMinArrayIndex(sumOfRows) + 1}");
     }
@@ -92,7 +93,7 @@ System.Console.WriteLine();
 
 int matrixRows = 6;
 int matrixColumns = 3;
-int minValueGenerated = 0;
+int minValueGenerated = -3;
 int maxValueGenerated = 3;
 
 FirstPositionOfMinSum(matrixRows, matrixColumns, minValueGenerated, maxValueGenerated);

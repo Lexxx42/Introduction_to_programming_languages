@@ -71,7 +71,9 @@ void PrintSortedMatrix(int matrixRows, int matrixColumns, int minValueGenerated,
     else
     {
         int[,] generatedMatrix = GenerateMatrix(matrixRows, matrixColumns, minValueGenerated, maxValueGenerated);
+        System.Console.WriteLine("Generated matrix:");
         PrintMatrix(generatedMatrix);
+        System.Console.WriteLine("Sorted matrix:");
         PrintMatrix(SortRowsAscending(generatedMatrix));
     }
 }
@@ -83,7 +85,7 @@ System.Console.WriteLine();
 
 int matrixRows = 6;
 int matrixColumns = 3;
-int minValueGenerated = 0;
-int maxValueGenerated = 9;
+int minValueGenerated = -5;
+int maxValueGenerated = 5;
 
 PrintSortedMatrix(matrixRows, matrixColumns, minValueGenerated, maxValueGenerated);
