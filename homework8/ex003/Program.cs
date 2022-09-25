@@ -51,20 +51,29 @@ int[,] MatrixMultiplication(int[,] firstMatrix, int[,] secondMatrix) // Multipli
 }
 
 // Prints the result of multiplication of matrices.
-void PrintMultiplication(int firstMatrixRows, int firstMatrixColumns, int secondMatrixRows, int secondMatrixColumns, int minValueGenerated, int maxValueGenerated)
+void PrintMultiplication(int firstMatrixRows, int firstMatrixColumns,
+                        int secondMatrixRows, int secondMatrixColumns,
+                        int minValueGenerated, int maxValueGenerated)
+{
+    int[,] firstMatrix = GenerateMatrix(firstMatrixRows, firstMatrixColumns, minValueGenerated, maxValueGenerated);
+    System.Console.WriteLine("First matrix:");
+    PrintMatrix(firstMatrix);
+    int[,] secondMatrix = GenerateMatrix(secondMatrixRows, secondMatrixColumns, minValueGenerated, maxValueGenerated);
+    System.Console.WriteLine("Second matrix:");
+    PrintMatrix(secondMatrix);
+    int[,] multiplication = MatrixMultiplication(firstMatrix, secondMatrix);
+    System.Console.WriteLine("First matrix x Second matrix:");
+    PrintMatrix(multiplication);
+}
+
+// Main sequence of calling other methods.
+void MainSequence(int firstMatrixRows, int firstMatrixColumns,
+                    int secondMatrixRows, int secondMatrixColumns,
+                    int minValueGenerated, int maxValueGenerated)
 {
     if (firstMatrixRows > 0 && firstMatrixColumns > 0 && secondMatrixRows > 0 && secondMatrixColumns > 0 && firstMatrixColumns == secondMatrixRows)
     {
-        int[,] firstMatrix = GenerateMatrix(firstMatrixRows, firstMatrixColumns, minValueGenerated, maxValueGenerated);
-        System.Console.WriteLine("First matrix:");
-        PrintMatrix(firstMatrix);
-        int[,] secondMatrix = GenerateMatrix(secondMatrixRows, secondMatrixColumns, minValueGenerated, maxValueGenerated);
-        System.Console.WriteLine("Second matrix:");
-        PrintMatrix(secondMatrix);
-        int[,] multiplication = MatrixMultiplication(firstMatrix, secondMatrix);
-        System.Console.WriteLine("First matrix x Second matrix:");
-        PrintMatrix(multiplication);
-
+        PrintMultiplication(firstMatrixRows, firstMatrixColumns, secondMatrixRows, secondMatrixColumns, minValueGenerated, maxValueGenerated);
     }
     else if (firstMatrixRows <= 0 || firstMatrixColumns <= 0 || secondMatrixRows <= 0 || secondMatrixColumns <= 0)
     {
@@ -90,4 +99,6 @@ int secondMatrixColumns = 2;
 int minValueGenerated = 0;
 int maxValueGenerated = 3;
 
-PrintMultiplication(firstMatrixRows, firstMatrixColumns, secondMatrixRows, secondMatrixColumns, minValueGenerated, maxValueGenerated);
+MainSequence(firstMatrixRows, firstMatrixColumns,
+            secondMatrixRows, secondMatrixColumns,
+            minValueGenerated, maxValueGenerated);
