@@ -69,6 +69,7 @@ void PrintMatrix(int[,] matrix) // Matrix print.
 }
 
 
+Console.Clear();
 int cubicMatrixLength = Prompt("Enter cubic matrix length > ");
 System.Console.WriteLine();
 if (cubicMatrixLength <= 0)
@@ -77,5 +78,6 @@ if (cubicMatrixLength <= 0)
 }
 else
 {
+    System.Console.WriteLine("Spirally filled matrix:");
     PrintMatrix(SpiralFillMatrix(cubicMatrixLength));
 }
