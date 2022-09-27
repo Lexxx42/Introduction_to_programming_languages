@@ -1,5 +1,9 @@
 ﻿// sum all numbers from N to M
 
+int n = 1;
+int m = 19003;
+
+Console.Clear();
 // recursion
 var startRec = DateTime.Now;
 int SumRec(int n, int m)
@@ -10,7 +14,9 @@ int SumRec(int n, int m)
     }
     return n += SumRec(n+1,m);
 }
-
+System.Console.WriteLine($"Sum from {n} to {m} = {SumRec(n,m)}");
+var finishRec = DateTime.Now - startRec;
+System.Console.WriteLine($"Time recursion: {finishRec}");
 
 // cycle
 var startC = DateTime.Now;
@@ -23,28 +29,16 @@ int SumC(int n, int m)
     }
     return sum;
 }
+System.Console.WriteLine($"Sum from {n} to {m} = {SumC(n,m)}");
+var finishC = DateTime.Now - startC;
+System.Console.WriteLine($"Time cycle: {finishC}");
 
 // gauss
 var startGauss = DateTime.Now;
-long SumGauss(int n, int m)
+int SumGauss(int n, int m)
 {
-    return (n+m)*(n+m-1)/2;
+    return (n+m)*(m-n+1)/2;
 }
-
-
-int n = 1;
-int m = 19000;
-var finishRec = DateTime.Now - startRec;
-var finishC = DateTime.Now - startC;
-var finishGauss = DateTime.Now - startGauss;
-
-System.Console.WriteLine($"Time recursion: {finishRec}");
-System.Console.WriteLine($"Sum from {n} to {m} = {SumRec(n,m)}");
-System.Console.WriteLine();
-System.Console.WriteLine($"Time cycle: {finishC}");
-System.Console.WriteLine($"Sum from {n} to {m} = {SumC(n,m)}");
-System.Console.WriteLine();
-System.Console.WriteLine($"Time Gauss: {finishGauss}");
 System.Console.WriteLine($"Sum from {n} to {m} = {SumGauss(n,m)}");
-
-
+var finishGauss = DateTime.Now - startGauss;
+System.Console.WriteLine($"Time Gauss: {finishGauss}");
