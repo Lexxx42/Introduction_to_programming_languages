@@ -28,7 +28,7 @@ int SumC(int n, int m)
 var startGauss = DateTime.Now;
 long SumGauss(int n, int m)
 {
-    return (n+m)*(m-n)/2;
+    return (n+m)*(m-n+1)/2;
 }
 
 
