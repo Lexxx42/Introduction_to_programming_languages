@@ -34,6 +34,8 @@ print((0.3+0.3+0.3)-(0.9))
 # Узнать тип объекта можно так:
 print(type(7))
 print(type(7.0))
+print(type("23"))
+print(type({1,2,3}))
 
 number = float(0.2)
 if number == 0.2:
