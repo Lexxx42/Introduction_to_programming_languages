@@ -12,7 +12,6 @@
 #  '\t' — символ табуляции.
 # Заметьте, что левым столбцом и верхней строкой выводятся
 # сами числа из заданных отрезков — заголовочные столбец и строка таблицы.
-from array import array
 
 a = 7
 b = 10
@@ -20,9 +19,9 @@ c = 5
 d = 6
 
 # correct
-print('', end = '\t')
+print('', end='\t')
 for k in range(c, d + 1):
-    print(k, end='\t')   
+    print(k, end='\t')
 for i in range(a, b + 1):
     print()
     print(i, end='\t')
@@ -33,5 +32,5 @@ print()
 print('\n')
 # shorter
 print('', *range(c, d+1), sep='\t')
-for i in range(a,b+1):
-    print(i, *range(i*c,(i*d)+1, i), sep='\t')
+for i in range(a, b+1):
+    print(i, *range(i*c, (i*d)+1, i), sep='\t')
