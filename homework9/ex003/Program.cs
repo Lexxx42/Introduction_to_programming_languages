@@ -25,6 +25,6 @@ void MainSequence(int firstNumber, int secondNumber)
 }
 
 
-int m = 3;
-int n = 2;
+int m = 2;
+int n = 0;
 MainSequence(m, n);
