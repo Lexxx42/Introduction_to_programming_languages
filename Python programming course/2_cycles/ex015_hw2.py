@@ -19,24 +19,14 @@
 # 9       45      54
 # 10      50      60
 
-a = 7
-b = 10
-c = 5
-d = 6
-
-# correct
-print('', end='\t')
-for k in range(c, d + 1):
-    print(k, end='\t')
-for i in range(a, b + 1):
-    print()
-    print(i, end='\t')
-    for j in range(c, d + 1):
-        print(i * j, end='\t')
-print()
 
 print('\n')
 # shorter
+a = 1
+b = 8
+c = 8
+d = 9
+
 print('', *range(c, d+1), sep='\t')
 for i in range(a, b+1):
     print(i, *range(i*c, (i*d)+1, i), sep='\t')
