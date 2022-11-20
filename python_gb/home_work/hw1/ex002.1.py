@@ -3,7 +3,7 @@
 def check_for_falsity(x, y, z, w):
     print('X', 'Y', 'Z', 'W', 'S', sep='\t')
     for i in range(len(x)):
-        s = (w[i] and z[i]) or not y[i] or (not x[i] is not w[i])
+        s = (w[i] and z[i]) or not y[i] or (x[i] is w[i])
         print(f'{(x[i])}', f'{(y[i])}', f'{(z[i])}', f'{(w[i])}', int(s), sep='\t')
 
 
