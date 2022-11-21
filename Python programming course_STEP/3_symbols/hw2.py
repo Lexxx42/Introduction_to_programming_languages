@@ -47,6 +47,5 @@ def zip(s, s_new):
 s = input()
 s_new = []
 zip(s, s_new)
-
 for i in range(len(s_new)):
     print(f'{s_new[i]}', end='')
