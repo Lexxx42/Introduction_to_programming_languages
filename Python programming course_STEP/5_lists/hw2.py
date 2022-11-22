@@ -29,15 +29,14 @@ def sum_neighbor(in_list):
         return out_list
     else:
         for i in range(len(in_list)):
-            if i < len(in_list)-1:
-                out_list.append(in_list[i+1]+in_list[i-1])
+            if i < len(in_list) - 1:
+                out_list.append(in_list[i + 1] + in_list[i - 1])
             else:
-                out_list.append(in_list[i-1]+in_list[0])
+                out_list.append(in_list[i - 1] + in_list[0])
         return out_list
 
 
 input_list = list(int(i) for i in input().split())
-a=sum_neighbor(input_list)
+a = sum_neighbor(input_list)
 str_a = map(str, a)
 print(*str_a, sep=' ')
-
