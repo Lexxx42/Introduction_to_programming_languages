@@ -13,3 +13,12 @@
 # Sample Output:
 #
 # 1 2 2 3 3 3 4
+
+user_input = int(input())
+count = 0
+for i in range(1, user_input + 1):
+    for j in range(0, i):
+        if count >= user_input:
+            break
+        count += 1
+        print(i, end=' ')
