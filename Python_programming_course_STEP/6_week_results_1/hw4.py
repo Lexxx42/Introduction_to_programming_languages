@@ -41,25 +41,34 @@ def adding_to_list(list_for_input):
     adding_to_list(list_for_input)
 
 
-user_input_list = []
-adding_to_list(user_input_list)
-print(user_input_list)  # list with values [[1, 2, 3], [1, 2, 3]]
+def plot(sub_list):
+    for i in range(len(a)):
+        sub_sub_list = []
+        for j in range(len(a[0])):
+            if j == len(a[0]) - 1:
+                if i == len(a) - 1:
+                    sub_sub_list.append(a[i - 1][j] + a[0][j] + a[i][j - 1] + a[i][0])
+                else:
+                    sub_sub_list.append(a[i - 1][j] + a[i + 1][j] + a[i][j - 1] + a[i][0])
+            else:
+                if i == len(a) - 1:
+                    sub_sub_list.append(a[i - 1][j] + a[0][j] + a[i][j - 1] + a[i][j + 1])
+                else:
+                    sub_sub_list.append(a[i - 1][j] + a[i + 1][j] + a[i][j - 1] + a[i][j + 1])
+        sub_list.append(sub_sub_list)
+    return sub_list
 
-n = len(user_input_list)
-sub_list = [[0]*len(user_input_list[0])]*n
-print(sub_list)  # [[0, 0, 0], [0, 0, 0]]
 
-numbers_list = [] 
-for c in user_input_list:
-    for k in c:
-        numbers_list.append(k)
-print(numbers_list)  # [1, 2, 3, 1, 2, 3]
+def print_output(list_for_output):
+    for n in range(len(list_for_output)):
+        for m in range(len(list_for_output[0])):
+            print(list_for_output[n][m], end=' ')
+        if len(list_for_output) > 1:
+            print()
 
-# for i in range(len(sub_list)):
-#     for j in range(len(sub_list[0])):
-#         #sub_list[i][j] = 
-#         if j==len(sub_list[0]):
 
-# print(sub_list)
-
-print(user_input_list[-1][-1]) # 6
+a = []
+adding_to_list(a)
+sub_list = []
+output_list = plot(sub_list)
+print_output(output_list)
