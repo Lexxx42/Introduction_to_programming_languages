@@ -36,3 +36,7 @@ def my_range(start, stop, step=1):
 
 
 print(my_range(2, 15, 3))
+
+# Явное указание аргументов
+
+print(my_range(stop=21, start=3))
