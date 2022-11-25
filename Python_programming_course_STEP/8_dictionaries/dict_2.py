@@ -15,4 +15,4 @@ for value in d.values():
 
 print()
 for key, value in d.items():
-    print(key, value, end=';')
+    print(key, value, end='; ')
