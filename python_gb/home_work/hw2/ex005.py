@@ -22,6 +22,6 @@ def mix(list_1):
 
 
 input_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(input_list)
+print('Input list:', input_list)
 list_output = mix(input_list)
-print(list_output)
+print('Output list:', list_output)
