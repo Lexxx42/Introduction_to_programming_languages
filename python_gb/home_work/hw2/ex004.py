@@ -21,12 +21,12 @@ position_one = int(input())
 print('Enter position two: ', end='')
 position_two = int(input())
 
-list1 = []
+list_1 = []
 for i in range(abs(n) * 2 + 1):
-    list1.append(-n + i)
-print(list1)
+    list_1.append(-n + i)
+print(list_1)
 
-if len(list1) >= position_one > 0 and len(list1) >= position_two > 0:
-    print(f' -> {list1[position_one - 1] * list1[position_two - 1]}')
+if len(list_1) >= position_one > 0 and len(list_1) >= position_two > 0:
+    print(f' -> {list_1[position_one - 1] * list_1[position_two - 1]}')
 else:
     print('There are no values for these positions!')

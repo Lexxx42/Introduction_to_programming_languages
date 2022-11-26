@@ -31,11 +31,11 @@ print('This program takes the number N as input and '
       'outputs a set of products of numbers from 1 to N in the form of a list.')
 print('Please enter a natural number > ', end='')
 number = int(input())
-list1 = []
-print_fact(list1)
+list_1 = []
+print_fact(list_1)
 
 # Easy way :^)
-# list1 = []
+# list_1 = []
 # for i in range(1, number+1):
-#     list1.append(factorial(i))
-# print(list1)
+#     list_1.append(factorial(i))
+# print(list_1)
