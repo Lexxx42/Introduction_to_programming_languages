@@ -9,11 +9,18 @@
 
 def calc_sum_digits(input_list):
     sum_after_dot = 0
+    input_list[0] = abs(input_list[0])
+    input_list[1] = abs(input_list[1])
+    while input_list[0] > 9:
+        sum_after_dot += input_list[0] % 10
+        input_list[0] = input_list[0] // 10
+    sum_after_dot += input_list[0]
     while input_list[1] > 9:
         sum_after_dot += input_list[1] % 10
         input_list[1] = input_list[1] // 10
     sum_after_dot += input_list[1]
-    return abs(input_list[0]) + sum_after_dot
+
+    return sum_after_dot
 
 
 print('This program takes a real number as input and displays the '
