@@ -16,6 +16,9 @@ def calc_sum_digits(input_list):
     return abs(input_list[0]) + sum_after_dot
 
 
+print('This program takes a real number as input and displays the '
+      'sum of its digits. Without working with string methods.')
+print('Please, enter a real number > ', end='')
 input_number = [int(i) for i in input().split('.')]
 result = calc_sum_digits(input_number)
-print(result)
+print('Sum of digits in number = ', result)
