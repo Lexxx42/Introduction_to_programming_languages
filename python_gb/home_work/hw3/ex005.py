@@ -11,8 +11,10 @@ def neg_fib(num):
     for i in range(1, num):
         fib_list.append(fib_list[i] + fib_list[i - 1])
     print(fib_list)
-    for i in range(0, -n, -1):
-        fib_list.insert(0, fib_list[i + 2] - fib_list[i + 1])
+    fib_list.insert(0, 1)
+    fib_list.insert(0, -1)
+    for i in range(2, num):
+        fib_list.insert(0, fib_list[i + 2] - fib_list[i + 2])
     print(fib_list)
 
 
