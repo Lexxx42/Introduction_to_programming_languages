@@ -13,9 +13,11 @@
 
 def convert_to_binary(number):
     output_list = []
-    while (number // 2) > 1:
+    while (number // 2) >= 1:
         output_list.append(number % 2)
         number = number // 2
+    if number==1:
+        output_list.append(number)
     return output_list[::-1]
 
 
