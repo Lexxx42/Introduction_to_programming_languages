@@ -21,7 +21,12 @@ def convert_to_binary(number):
     return output_str[::-1]
 
 
-print('This program converts decimal number to binary.')
-int_number_input = int(input('Please enter the number: '))
-converted_number = convert_to_binary(int_number_input)
-print(converted_number)
+def main():
+    print('This program converts decimal number to binary.')
+    int_number_input = int(input('Please enter the number: '))
+    converted_number = convert_to_binary(int_number_input)
+    print(converted_number)
+
+
+if __name__ == '__main__':
+    main()
