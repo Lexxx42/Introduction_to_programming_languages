@@ -18,7 +18,7 @@ def input_data_in_list(length):
     output_list = []
     for i in range(length):
         output_list.append(int(input(f"Enter list's {i + 1} value: ")))
-    print(f'Input list is {output_list}')
+    print(f'Input list is: {output_list}')
     return output_list
 
 

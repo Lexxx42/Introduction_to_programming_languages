@@ -30,11 +30,10 @@ def mult_pairs_in_list(input_list):
 
 
 def main():
-    print('This program finds the product of pairs of numbers in a list. '
+    print('This program finds the multiplication of pairs of numbers in a list. '
           'A pair is the first and last element, the second and penultimate, and so on.')
     list_length = int(input('Enter the length of the list: '))
-    s = input_data_in_list(list_length)
-    print(mult_pairs_in_list(s))
+    print(f'Multiplication of pairs list: {mult_pairs_in_list(input_data_in_list(list_length))}')
 
 
 if __name__ == '__main__':
