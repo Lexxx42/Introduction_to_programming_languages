@@ -19,6 +19,9 @@ def fib(n):
 def main():
     print('This program generates a list of Fibonacci numbers, including those for negative indexes.')
     num = int(input('Enter a Fibonacci number: '))
+    if num < 0:
+        print('Number must be positive')
+        exit()
     for i in range(-num, num + 1):
         print(f'{fib(i)} ', end='')
 
