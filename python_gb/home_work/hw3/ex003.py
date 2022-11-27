@@ -12,16 +12,17 @@
 #
 
 def convert_to_binary(number):
-    output_list = []
+    output_str = ''
     while (number // 2) >= 1:
-        output_list.append(number % 2)
+        output_str += ''.join(str(number % 2))
         number = number // 2
-    if number==1:
-        output_list.append(number)
-    return output_list[::-1]
+    if number == 1:
+        output_str += ''.join(str(number % 2))
+    return output_str[::-1]
 
 
 print('This program converts decimal number to binary.')
 int_number_input = int(input('Please enter the number: '))
 converted_number = convert_to_binary(int_number_input)
 print(converted_number)
+# output_str += ''.join(str(number % 2))
