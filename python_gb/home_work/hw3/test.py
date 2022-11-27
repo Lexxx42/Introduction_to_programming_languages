@@ -9,6 +9,7 @@ def fib(n):
 
 
 num = int(input('Enter a Fibonacci number: '))
-output = ''
-for i in range(-num, num):
-    print(f'{fib(i)}')
+if num == 0:
+    print()
+for i in range(-num, num+1):
+    print(f'{fib(i)} ', end='')

@@ -6,18 +6,22 @@
 # out
 # -21 13 -8 5 -3 2 -1 1 0 1 1 2 3 5 8 13 21
 
-def neg_fib(num):
-    fib_list = [0, 1]
-    for i in range(1, num):
-        fib_list.append(fib_list[i] + fib_list[i - 1])
-    print(fib_list)
-    fib_list.insert(0, 1)
-    fib_list.insert(0, -1)
-    for i in range(2, num):
-        fib_list.insert(0, fib_list[i + 2] - fib_list[i + 2])
-    print(fib_list)
+def fib(n):
+    if n > -1:
+        if n == 0 or n == 1:
+            return n
+        else:
+            return fib(n - 1) + fib(n - 2)
+    if n <= 1:
+        return ((-1) ** (abs(n) + 1)) * fib(abs(n))
 
 
-print('This program generates a list of Fibonacci numbers, including those for negative indexes.')
-n = int(input('Enter a Fibonacci number: '))
-neg_fib(n)
+def main():
+    print('This program generates a list of Fibonacci numbers, including those for negative indexes.')
+    num = int(input('Enter a Fibonacci number: '))
+    for i in range(-num, num + 1):
+        print(f'{fib(i)} ', end='')
+
+
+if __name__ == '__main__':
+    main()
