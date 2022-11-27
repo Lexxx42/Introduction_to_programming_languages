@@ -1,3 +1,8 @@
+def f(x):
+    x+2
+
+
+
 n = int(input())
 d = {}
 while len(d) < n:
