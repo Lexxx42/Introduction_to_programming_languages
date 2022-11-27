@@ -1,12 +1,15 @@
 def f(x):
-    x+2
-
+    return x + 2
 
 
 n = int(input())
-d = {}
+number = int(input())
+result = f(number)
+d = {number: result}
+print(result)
 while len(d) < n:
     temp = int(input())
-    d[temp] = f(temp)
+    number = temp
+    result = f(temp)
+    d[temp] = result
     print(d[temp])
-
