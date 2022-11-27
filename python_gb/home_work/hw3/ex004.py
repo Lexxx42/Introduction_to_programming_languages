@@ -13,7 +13,7 @@ def input_values_in_list(length):
     output_list = []
     for i in range(length):
         output_list.append(round(random.uniform(0, 10), 2))
-    print(f'Input list is: {output_list}')
+    print(f'Random list is: {output_list}')
     return output_list
 
 
