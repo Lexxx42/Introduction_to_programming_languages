@@ -18,7 +18,7 @@ def input_data_in_list(length):
     output_list = []
     for i in range(length):
         output_list.append(int(input(f"Enter list's {i + 1} value: ")))
-    print(output_list)
+    print(f'Input list is {output_list}')
     return output_list
 
 
@@ -29,6 +29,11 @@ def sum_of_elements_in_list(list_for_sum):
     return sum_elements
 
 
-print('This program finds the sum of the elements of a list in an odd position.')
-list_length = int(input('Enter the length of the list: '))
-print(f'Sum of the elements in list = {sum_of_elements_in_list(input_data_in_list(list_length))}')
+def main():
+    print('This program finds the sum of the elements of a list in an odd position.')
+    list_length = int(input('Enter the length of the list: '))
+    print(f'Sum of the elements in list = {sum_of_elements_in_list(input_data_in_list(list_length))}')
+
+
+if __name__ == '__main__':
+    main()
