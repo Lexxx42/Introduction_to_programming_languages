@@ -24,6 +24,9 @@ def convert_to_binary(number):
 def main():
     print('This program converts decimal number to binary.')
     int_number_input = int(input('Please enter the number: '))
+    if int_number_input < 0:
+        print("Program don't work with negative numbers")
+        exit()
     converted_number = convert_to_binary(int_number_input)
     print(converted_number)
 
