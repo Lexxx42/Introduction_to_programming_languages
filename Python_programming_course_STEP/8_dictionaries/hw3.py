@@ -24,33 +24,17 @@
 # 41
 
 n = int(input())
-d = []
-for i in range(n):
-    d.append(int(input()))
-print('input', d)
-
-
-def strp_2(list_input):
-    for i in range(len(list_input) - 1, 0, -1):
-        if list_input[i] == list_input[i - 1]:
-            list_input.remove(list_input[i])
-        return list_input
-
-
-def strp_1(list_1):
-    if len(list_1) == 2:
-        strp_2(list_1)
-    for i in range(len(list_1) - 1, 1, -1):
-        if i == 0:
-            return list_1
-        else:
-            if list_1[i] == list_1[i - 1]:
-                list_1.remove(list_1[i])
-                if len(list_1) == 2:
-                    strp_2(list_1)
-        return list_1
-    return list_1
-
-
-d = strp_1(d)
-print('output', d)
+count = 1
+x = input()
+result = f(int(x))
+print(result)
+results = {x: result}
+while count < n:
+    x = input()
+    count += 1
+    if x not in results.keys():
+        result = f(int(x))
+        print(result)
+        results[x] = result
+    else:
+        print(results[x])
