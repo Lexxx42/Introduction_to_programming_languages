@@ -1,4 +1,4 @@
-abc a bCd 
-bC AbC BC BCD 
-bcd ABC
-zzz
+Owen;39;100;35
+Thornton;90;44;73
+Bishop;62;53;52
+Nelson;52;54;57
