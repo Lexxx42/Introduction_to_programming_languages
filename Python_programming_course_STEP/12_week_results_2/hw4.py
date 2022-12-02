@@ -32,7 +32,7 @@
 
 number_of_coordinates = int(input())
 directions = {}
-for i in range(number_of_coordinates):
+for _ in range(number_of_coordinates):
     input_coords = input().split()
     if input_coords[0] in directions:
         directions[input_coords[0]] = directions.get(input_coords[0]) + int(input_coords[1])
