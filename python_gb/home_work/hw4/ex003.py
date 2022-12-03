@@ -12,7 +12,7 @@ def user_input():
         user_input()
 
 
-def generate_list(length):
+def generate_list(length: int):
     generated_list = [randint(-9, 9) for _ in range(length)]
     print(generated_list)
     find_similar_items(generated_list)

@@ -15,7 +15,7 @@ def user_input():
         user_input()
 
 
-def generate_polynome(degree):
+def generate_polynome(degree: int):
     degree_temp = degree
     start = 1
     for _ in range(3):
@@ -43,7 +43,7 @@ def generate_polynome(degree):
         print(polynome_list)
 
 
-def generate_power(degree, first_poly, length_of_polynome):
+def generate_power(degree: int, first_poly: int, length_of_polynome: int):
     if first_poly == 1:
         power = str(degree)
     else:
@@ -60,7 +60,7 @@ def choose_symbol():
     return symbol
 
 
-def file_write(export_list, start):
+def file_write(export_list: list, start: int):
     export_string = ''
     for i, item in enumerate(export_list):
         if i == len(export_list) - 1:
