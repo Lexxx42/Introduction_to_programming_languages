@@ -16,23 +16,26 @@ def user_input():
 
 
 def generate_polynome(degree):
-    polynome_list = []
-    k = randint(0, 100)
-    length_of_polynome = randint(0, degree)
-    while degree >= 0 and length_of_polynome >= 0:
-        power = str(degree)
-        if degree == 1:
-            polynome_list.append(str(k) + '*' + 'x' + '+' + str(randint(0, 100)))
-            length_of_polynome -= 1
-        elif degree == 0:
-            polynome_list.append(str(randint(0, 100)))
-            length_of_polynome -= 1
-        else:
-            polynome_list.append(str(k) + '*' + 'x' + '^' + power + '+' + str(randint(0, 100)))
-            length_of_polynome -= 1
-        degree -= 1
-    file_write(polynome_list)
-    print(polynome_list)
+    degree_temp = degree
+    for _ in range(3):
+        polynome_list = []
+        degree = degree_temp
+        k = randint(0, 100)
+        length_of_polynome = randint(0, degree)
+        while degree >= 0 and length_of_polynome >= 0:
+            power = str(degree)
+            if degree == 1:
+                polynome_list.append(str(k) + '*' + 'x' + '+' + str(randint(0, 100)))
+                length_of_polynome -= 1
+            elif degree == 0:
+                polynome_list.append(str(randint(0, 100)))
+                length_of_polynome -= 1
+            else:
+                polynome_list.append(str(k) + '*' + 'x' + '^' + power + '+' + str(randint(0, 100)))
+                length_of_polynome -= 1
+            degree -= 1
+        file_write(polynome_list)
+        print(polynome_list)
 
 
 def choose_symbol():
@@ -52,8 +55,8 @@ def file_write(export_list):
         else:
             export_string = export_string + item + choose_symbol()
 
-    with open('ex004.txt', 'w') as data:
-        data.writelines(export_string)
+    with open('ex004.txt', 'a') as data:
+        data.write(export_string+'\n')
 
 
 def main():
