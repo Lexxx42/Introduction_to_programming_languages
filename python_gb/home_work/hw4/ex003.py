@@ -21,13 +21,17 @@ def generate_list(length):
 
 def find_similar_items(list_for_search):
     similar_elements = {}
+    out_list = []
     count = 1
     for i in range(len(list_for_search)):
-        if not list_for_search[i] in similar_elements:
+        if list_for_search[i] not in similar_elements:
             similar_elements[list_for_search[i]] = count
         else:
             similar_elements[list_for_search[i]] = similar_elements.get(list_for_search[i]) + 1
-    print(similar_elements.keys())
+    for key in similar_elements:
+        out_list.append(key)
+    print(out_list)
+    return out_list
 
 
 def main():
