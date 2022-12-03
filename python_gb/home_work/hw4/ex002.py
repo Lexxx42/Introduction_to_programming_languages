@@ -4,16 +4,17 @@ from eratosthenes import eratosthenes
 
 
 def prime_factors(input_number):
-    factors = set()
+    factors = []
     if input_number > 1:
         prime_list = eratosthenes(input_number)
         print(prime_list)
         i = 0
-        while input_number != 1:
+        while input_number != 1 or input_number == 0:
             if input_number % prime_list[i] == 0:
-                factors.add(prime_list[i])
+                factors.append(prime_list[i])
                 input_number /= prime_list[i]
-            i += 1
+            else:
+                i += 1
         print(factors)
     else:
         print('Natural number must be positive and greater than 1.')
