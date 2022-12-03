@@ -31,7 +31,23 @@ def generate_polynome(degree):
             polynome_list.append(str(k) + '*' + 'x' + '^' + power + '+' + str(randint(0, 100)))
             length_of_polynome -= 1
         degree -= 1
+    file_write(polynome_list)
     print(polynome_list)
+
+
+def chose_symbol():
+    symbol_rand = randint(0, 1)
+    if symbol_rand == 1:
+        symbol = '-'
+    else:
+        symbol = '+'
+    return symbol
+
+
+def file_write(export_list):
+    export_string = f' {chose_symbol()} '.join(export_list)
+    with open('ex004.txt', 'w') as data:
+        data.writelines(export_string)
 
 
 def main():
