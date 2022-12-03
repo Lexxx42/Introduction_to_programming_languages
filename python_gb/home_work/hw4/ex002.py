@@ -23,7 +23,11 @@ def prime_factors(input_number):
 
 def user_input():
     input_number = int(input('Please enter a natural number N: '))
-    prime_factors(input_number)
+    if input_number > 0:
+        prime_factors(input_number)
+    else:
+        print('Number must be natural (greater than 0)')
+        user_input()
 
 
 def main():
