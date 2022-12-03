@@ -9,7 +9,7 @@ def eratosthenes(n: int):
 
 
 def main():
-    n = int(input("Введите верхнюю границу диапазона: "))
+    n = int(input("Please enter a natural number N: "))
     print(eratosthenes(n))
 
 

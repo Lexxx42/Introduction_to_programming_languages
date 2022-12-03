@@ -7,7 +7,6 @@ def prime_factors(input_number):
     factors = []
     if input_number > 1:
         prime_list = eratosthenes(input_number)
-        print(prime_list)
         i = 0
         while input_number != 1 or input_number == 0:
             if input_number % prime_list[i] == 0:
