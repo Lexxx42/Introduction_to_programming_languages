@@ -20,6 +20,7 @@ def user_input():
 
 
 def main():
+    print('This program calculates a number with a given precision.')
     real_number, accuracy = user_input()
     round_decimal(real_number, accuracy)
 
