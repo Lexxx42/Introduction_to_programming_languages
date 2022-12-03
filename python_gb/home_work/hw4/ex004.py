@@ -17,13 +17,14 @@ def user_input():
 
 def generate_polynome(degree):
     degree_temp = degree
+    start = 1
     for _ in range(3):
         polynome_list = []
         degree = degree_temp
         k = randint(0, 100)
         length_of_polynome = randint(0, degree)
+        first_poly = 1
         while degree >= 0 and length_of_polynome >= 0:
-            power = str(degree)
             if degree == 1:
                 polynome_list.append(str(k) + '*' + 'x' + '+' + str(randint(0, 100)))
                 length_of_polynome -= 1
@@ -31,11 +32,23 @@ def generate_polynome(degree):
                 polynome_list.append(str(randint(0, 100)))
                 length_of_polynome -= 1
             else:
-                polynome_list.append(str(k) + '*' + 'x' + '^' + power + '+' + str(randint(0, 100)))
+                polynome_list.append(
+                    str(k) + '*' + 'x' + '^' + generate_power(degree, first_poly, length_of_polynome) + '+' + str(
+                        randint(0, 100)))
+                first_poly = 0
                 length_of_polynome -= 1
             degree -= 1
-        file_write(polynome_list)
+        file_write(polynome_list, start)
+        start = 0
         print(polynome_list)
+
+
+def generate_power(degree, first_poly, length_of_polynome):
+    if first_poly == 1:
+        power = str(degree)
+    else:
+        power = str(randint(length_of_polynome, degree))
+    return power
 
 
 def choose_symbol():
@@ -47,16 +60,19 @@ def choose_symbol():
     return symbol
 
 
-def file_write(export_list):
+def file_write(export_list, start):
     export_string = ''
     for i, item in enumerate(export_list):
         if i == len(export_list) - 1:
             export_string = export_string + item
         else:
             export_string = export_string + item + choose_symbol()
-
-    with open('ex004.txt', 'a') as data:
-        data.write(export_string+'\n')
+    if start == 1:
+        with open('ex004.txt', 'w') as data:
+            data.write(export_string + '\n')
+    else:
+        with open('ex004.txt', 'a') as data:
+            data.write(export_string + '\n')
 
 
 def main():
