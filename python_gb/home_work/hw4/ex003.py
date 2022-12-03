@@ -12,14 +12,14 @@ def user_input() -> None:
         user_input()
 
 
-def generate_list(length: int) -> list:
+def generate_list(length: int) -> list[int]:
     generated_list = [randint(-9, 9) for _ in range(length)]
     print(generated_list)
     find_similar_items(generated_list)
     return generated_list
 
 
-def find_similar_items(list_for_search) -> list:
+def find_similar_items(list_for_search) -> list[int]:
     similar_elements = {}
     out_list = []
     count = 1

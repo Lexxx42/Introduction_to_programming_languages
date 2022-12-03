@@ -3,7 +3,7 @@
 from eratosthenes import eratosthenes
 
 
-def prime_factors(input_number: int):
+def prime_factors(input_number: int) -> list[int]:
     factors = []
     if input_number > 1:
         prime_list = eratosthenes(input_number)

@@ -62,7 +62,7 @@ def choose_symbol() -> str:
     return symbol
 
 
-def file_write(export_list: list, start: int) -> None:
+def file_write(export_list: list[str], start: int) -> None:
     export_string = ''
     for i, item in enumerate(export_list):
         if i == len(export_list) - 1:
