@@ -68,10 +68,10 @@ def file_write(export_list, start):
         else:
             export_string = export_string + item + choose_symbol()
     if start == 1:
-        with open('ex004.txt', 'w') as data:
+        with open('ex004.txt', 'w', encoding='utf-8') as data:
             data.write(export_string + '\n')
     else:
-        with open('ex004.txt', 'a') as data:
+        with open('ex004.txt', 'a', encoding='utf-8') as data:
             data.write(export_string + '\n')
 
 
