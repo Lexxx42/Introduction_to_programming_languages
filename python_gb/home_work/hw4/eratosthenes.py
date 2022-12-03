@@ -1,4 +1,4 @@
-def eratosthenes(n: int):
+def eratosthenes(n: int) -> list:
     sieve = set(range(2, n + 1))
     prime_list = []
     while sieve:
@@ -8,7 +8,7 @@ def eratosthenes(n: int):
     return prime_list
 
 
-def main():
+def main() -> None:
     n = int(input("Please enter a natural number N: "))
     print(eratosthenes(n))
 

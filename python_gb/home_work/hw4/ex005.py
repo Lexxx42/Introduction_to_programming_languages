@@ -2,7 +2,7 @@
 # Задача - сформировать файл, содержащий сумму многочленов.
 
 
-def main():
+def main() -> None:
     print(
         "Given two files, each of which contains a record of the polynomial. "
         "The task is to generate a file containing the sum of polynomials")
@@ -19,3 +19,7 @@ def main():
     with open('ex005_save.txt', 'w', encoding='utf-8') as file3:
         for i in range(len(content_file1)):
             file3.write(content_file1[i] + ' + ' + content_file2[i] + '\n')
+
+
+if __name__ == '__main__':
+    main()

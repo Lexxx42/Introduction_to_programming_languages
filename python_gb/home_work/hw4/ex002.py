@@ -21,7 +21,7 @@ def prime_factors(input_number: int):
     return factors
 
 
-def user_input():
+def user_input() -> None:
     input_number = int(input('Please enter a natural number N: '))
     if input_number > 0:
         prime_factors(input_number)
@@ -30,7 +30,7 @@ def user_input():
         user_input()
 
 
-def main():
+def main() -> None:
     print('This program lists the prime factors of N.')
     user_input()
 

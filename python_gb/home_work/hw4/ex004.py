@@ -5,8 +5,10 @@
 # - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 from random import randint
 
+from numpy.core.defchararray import strip
 
-def user_input():
+
+def user_input() -> None:
     input_number = int(input('Please enter a natural degree k: '))
     if input_number > 0:
         generate_polynome(input_number)
@@ -15,7 +17,7 @@ def user_input():
         user_input()
 
 
-def generate_polynome(degree: int):
+def generate_polynome(degree: int) -> None:
     degree_temp = degree
     start = 1
     for _ in range(3):
@@ -43,7 +45,7 @@ def generate_polynome(degree: int):
         print(polynome_list)
 
 
-def generate_power(degree: int, first_poly: int, length_of_polynome: int):
+def generate_power(degree: int, first_poly: int, length_of_polynome: int) -> str:
     if first_poly == 1:
         power = str(degree)
     else:
@@ -51,7 +53,7 @@ def generate_power(degree: int, first_poly: int, length_of_polynome: int):
     return power
 
 
-def choose_symbol():
+def choose_symbol() -> str:
     symbol_rand = randint(0, 1)
     if symbol_rand == 1:
         symbol = ' - '
@@ -60,7 +62,7 @@ def choose_symbol():
     return symbol
 
 
-def file_write(export_list: list, start: int):
+def file_write(export_list: list, start: int) -> None:
     export_string = ''
     for i, item in enumerate(export_list):
         if i == len(export_list) - 1:
@@ -75,7 +77,7 @@ def file_write(export_list: list, start: int):
             data.write(export_string + '\n')
 
 
-def main():
+def main() -> None:
     print(
         "This program randomly generates a list of coefficients "
         "(values from 0 to 100) of a polynomial and writes a polynomial of degree k to a file")

@@ -3,7 +3,7 @@
 from random import randint
 
 
-def user_input():
+def user_input() -> None:
     input_number = int(input('Please enter a natural number N: '))
     if input_number > 0:
         generate_list(input_number)
@@ -12,14 +12,14 @@ def user_input():
         user_input()
 
 
-def generate_list(length: int):
+def generate_list(length: int) -> list:
     generated_list = [randint(-9, 9) for _ in range(length)]
     print(generated_list)
     find_similar_items(generated_list)
     return generated_list
 
 
-def find_similar_items(list_for_search):
+def find_similar_items(list_for_search) -> list:
     similar_elements = {}
     out_list = []
     count = 1
@@ -34,7 +34,7 @@ def find_similar_items(list_for_search):
     return out_list
 
 
-def main():
+def main() -> None:
     print('This program generates a list and outputs a list of non-repeating elements of the original sequence')
     user_input()
 
