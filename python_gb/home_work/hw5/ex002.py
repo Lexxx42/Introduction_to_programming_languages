@@ -44,7 +44,7 @@ def coding(str_1: str or int, str_new_list: list) -> list[str]:
     coding(x, str_new_list)
 
 
-def decoding(string_decoding) -> str:
+def decoding(string_decoding: str) -> str:
     list_decoded_repaired = []
     decoded_list = list(string_decoding)
     temp = ''
@@ -57,9 +57,11 @@ def decoding(string_decoding) -> str:
             temp += i
     print(list_decoded_repaired)
     print()
-
-
-
+    out_string = ''
+    for i in range(1, len(list_decoded_repaired), 2):
+        out_string += list_decoded_repaired[i] * list_decoded_repaired[i - 1]
+    print(out_string)
+    return out_string
 
 
 # string_for_coding = 'aaaaavvvvvvvvvvvvvvvvvvvvvvvvvvvvvssssDDDdddFFggggOOiiiaa'
