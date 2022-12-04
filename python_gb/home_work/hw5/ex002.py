@@ -23,15 +23,27 @@
 # 1v2b2w2P3u2T1Y1y2W2Q
 
 
-def coding(string: str):
-    dict_chars = {}
-    for i in string:
-        if i in dict_chars:
-            dict_chars[i] = dict_chars.get(i) + 1
-        else:
-            dict_chars[i] = 1
-    print(dict_chars)
+def coding(str_1, str_new_list):
+    count = 0
+    temp = str_1[0]
+    x = 0
+    for i in range(len(str_1)):
+        if str_1[i] == temp:
+            count += 1
+            temp = str_1[i]
+        elif str_1[i] != temp:
+            temp_index = i
+            x = str_1[temp_index:]
+            if x == str_1:
+                return str_new_list
+            break
+    str_new_list.append(str(count) + temp)
+    if not x:
+        return str_new_list
+    coding(x, str_new_list)
 
 
-string_for_coding = 'aaaaavvvvvvvvvvvvvvvvvvvvvvvvvvvvvssssDDDdddFFggggOOiiiaa'
-coding(string_for_coding)
+string = 'aaaaavvvvvvvvvvvvvvvvvvvvvvvvvvvvvssssDDDdddFFggggOOiiiaa'
+string_new_list = []
+coding(string, string_new_list)
+print(''.join(string_new_list))
