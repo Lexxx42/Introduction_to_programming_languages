@@ -24,9 +24,9 @@ def game_info(mode: int) -> None:
         quantity_candies_1 = 0
         quantity_candies_2 = 0
         if who_start:
-            print(f'First move from {player_1}')
+            print(f'First move from {player_1}, candies = {candies}')
         else:
-            print(f'First move from {player_2}')
+            print(f'First move from {player_2}, candies = {candies}')
         while candies > 28:
             if who_start:
                 taken_candies = take_candies(player_1)
@@ -36,6 +36,36 @@ def game_info(mode: int) -> None:
                 result(player_1, taken_candies, quantity_candies_1, candies)
             else:
                 taken_candies = take_candies(player_2)
+                quantity_candies_2 += taken_candies
+                candies -= taken_candies
+                who_start = True
+                result(player_2, taken_candies, quantity_candies_2, candies)
+        if who_start:
+            print(f'Player {player_1} wins! Last take = {candies}')
+        else:
+            print(f'Player {player_2} wins! Last take = {candies}')
+    elif mode == 1:
+        player_1 = 'You'
+        player_2 = 'friendly_BOT'
+        candies = 154
+        who_start = bool(randint(0, 1))
+        quantity_candies_1 = 0
+        quantity_candies_2 = 0
+        if who_start:
+            print(f'First move from {player_1}, candies = {candies}')
+        else:
+            print(f'First move from {player_2}, candies = {candies}')
+        while candies > 28:
+            if who_start:
+                taken_candies = take_candies(player_1)
+                quantity_candies_1 += taken_candies
+                candies -= taken_candies
+                who_start = False
+                result(player_1, taken_candies, quantity_candies_1, candies)
+            else:
+                taken_candies = candies % 29
+                if taken_candies == 0:
+                    taken_candies = 1
                 quantity_candies_2 += taken_candies
                 candies -= taken_candies
                 who_start = True
