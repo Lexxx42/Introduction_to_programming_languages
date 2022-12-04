@@ -19,7 +19,7 @@ def game_info(mode: int) -> None:
     elif mode == 0:
         player_1 = 'xxxNogibator2015xxx'
         player_2 = 'sunOfTheBeach'
-        candies = 2021
+        candies = 54
         who_start = bool(randint(0, 1))
         quantity_candies_1 = 0
         quantity_candies_2 = 0
@@ -40,6 +40,10 @@ def game_info(mode: int) -> None:
                 candies -= taken_candies
                 who_start = True
                 result(player_2, taken_candies, quantity_candies_2, candies)
+        if who_start:
+            print(f'Player {player_1} wins! Last take = {candies}')
+        else:
+            print(f'Player {player_2} wins! Last take = {candies}')
 
 
 def result(player_name: str, candies_taken: int, candies_of_player: int, candies_left: int):
