@@ -24,7 +24,7 @@
 # 1v2b2w2P3u2T1Y1y2W2Q
 
 
-def coding(str_1: str or int, str_new_list: list) -> list[str]:
+def coding(str_1: str, str_new_list: list) -> list:
     count = 0
     temp = str_1[0]
     x = 0
@@ -55,18 +55,56 @@ def decoding(string_decoding: str) -> str:
             list_decoded_repaired.append(i)
         else:
             temp += i
-    print(list_decoded_repaired)
-    print()
     out_string = ''
     for i in range(1, len(list_decoded_repaired), 2):
         out_string += list_decoded_repaired[i] * list_decoded_repaired[i - 1]
-    print(out_string)
     return out_string
 
 
-# string_for_coding = 'aaaaavvvvvvvvvvvvvvvvvvvvvvvvvvvvvssssDDDdddFFggggOOiiiaa'
-string_for_decoding = '5a29v4s3D3d2F4g2O3i2a'
-decoding(string_for_decoding)
-# string_new_list = []
-# coding(string_for_coding, string_new_list)
-# print(''.join(string_new_list))
+def open_file_read(filename: str) -> list[str]:
+    with open(filename) as data:
+        read_info = []
+        for line in data:
+            line = line.strip()
+            read_info.append(line)
+            print(line)
+    return read_info
+
+
+def open_file_write(filename: str, values: str):
+    is_empty = False
+    with open(filename) as data:
+        line = data.readline().strip()
+        if line == '':
+            is_empty = True
+    if is_empty:
+        with open(filename, 'w') as ouf:
+            ouf.write(values + '\n')
+    else:
+        with open(filename, 'a') as ouf:
+            ouf.write(values + '\n')
+
+
+def main() -> None:
+    # text_name_for_read = input('Enter the name of the file with the text: ')
+    # text_name_for_write = input('Enter the file name to record: ')
+    # text_name_for_decode = input('Enter the name of the file to decode: ')
+    text_name_for_read = 'text_words.txt'
+    text_name_for_write = 'text_code_words.txt'
+    text_name_for_decode = 'text_code_words.txt'
+
+    list_for_code = open_file_read(text_name_for_read)
+    for i in list_for_code:
+        empy_list_for_coding = []
+        coding(i, empy_list_for_coding)
+        coded_string = ''.join(empy_list_for_coding)
+        open_file_write(text_name_for_write, coded_string)
+
+    list_for_decode = open_file_read(text_name_for_write)
+    for j in list_for_decode:
+        decoded_string = decoding(j)
+        open_file_write(text_name_for_decode, decoded_string)
+
+
+if __name__ == '__main__':
+    main()
