@@ -15,7 +15,7 @@ def take_input(sign: str, board: list) -> None:
         select_cell = input('Where to place' + sign + '? ')
         try:
             select_cell = int(select_cell)
-        except:
+        except:  # Specify an exception class to catch or reraise the exception
             print('Incorrect input! Input must be a number')
             continue
         if 1 <= select_cell <= 9:
