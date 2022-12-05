@@ -42,6 +42,6 @@
 
 n = int(input())
 sum_n = 0
-for i in range(n):
-    sum_n += i
+for _ in range(n):
+    sum_n += int(input())
 print(sum_n)
