@@ -99,10 +99,10 @@ def choose_function(cmd, namesp, arg):
 
 def add(namesp, arg):
     if not namesp in all_dict.keys():
-        all_dict[namesp] = []
-        all_dict[namesp].append(arg)
+        all_dict[namesp] = [namesp, []]
+        all_dict[namesp][1].append(arg)
     else:
-        all_dict[namesp].append(arg)
+        all_dict[namesp][1].append(arg)
     print(all_dict)
 
 
@@ -124,7 +124,7 @@ def get(namespace, val):
 
 global_list = []
 all_dict = {}
-all_dict['global'] = []
+all_dict['global'] = ['None', []] # parent, [values]
 n = 3
 for i in range(n):
     cmd, namesp, arg = input().split()
