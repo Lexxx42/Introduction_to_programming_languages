@@ -98,14 +98,27 @@ def choose_function(cmd, namesp, arg):
 
 
 def add(namesp, arg):
-    all_dict[namesp] = all_dict.values([name])
+    if not namesp in all_dict.keys():
+        all_dict[namesp] = []
+        all_dict[namesp].append(arg)
     print(all_dict)
 
 
 def create(namesp, arg):
-    all_dict[namesp] = [arg]
+    if arg in all_dict:
+        all_dict[arg].append(namesp)
+    else:
+        all_dict[arg] = [namesp]
     print(all_dict)
 
+
+def get(namespace, val):
+    if val in all_dict[namespace]:
+        print(namespace)
+        return
+    else:
+        print('None')
+        
 
 global_list = []
 all_dict = {}
