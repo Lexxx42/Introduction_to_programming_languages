@@ -101,6 +101,8 @@ def add(namesp, arg):
     if not namesp in all_dict.keys():
         all_dict[namesp] = []
         all_dict[namesp].append(arg)
+    else:
+        all_dict[namesp].append(arg)
     print(all_dict)
 
 
