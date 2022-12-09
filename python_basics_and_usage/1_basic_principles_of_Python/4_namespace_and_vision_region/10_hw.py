@@ -97,34 +97,41 @@ def choose_function(cmd, namesp, arg):
         get(namesp, arg)
 
 
+# add global a
 def add(namesp, arg):
-    if not namesp in all_dict.keys():
-        all_dict[namesp] = [namesp, []]
-        all_dict[namesp][1].append(arg)
+    if namesp not in all_dict:
+        all_dict[namesp] = [arg, []]
+        all_dict[arg][1].append(namesp)
     else:
+
         all_dict[namesp][1].append(arg)
-    print(all_dict)
+    #print(all_dict)
 
 
+# create foo global
 def create(namesp, arg):
-    if arg in all_dict:
+    if namesp in all_dict:
         all_dict[arg].append(namesp)
     else:
-        all_dict[arg] = [namesp]
-    print(all_dict)
+        all_dict[namesp] = [arg, []]
+        all_dict[arg][1].append(namesp)
+    #print(all_dict)
 
 
 def get(namespace, val):
     if val in all_dict[namespace][1]:
         print(namespace)
-    else:
+        return
+    elif all_dict[namespace][0] == 'None':
         print('None')
-        
+        return
+    else:
+        get(all_dict[namespace][0], val)
 
-global_list = []
+
 all_dict = {}
-all_dict['global'] = ['None', []] # parent, [values]
-n = 3
+all_dict['global'] = ['None', []]  # parent, [values]
+n = int(input())
 for i in range(n):
     cmd, namesp, arg = input().split()
     choose_function(cmd, namesp, arg)
