@@ -94,7 +94,7 @@ def choose_function(cmd, namesp, arg):
     elif cmd == 'create':
         create(namesp, arg)
     elif cmd == 'get':
-        print()
+        get(namesp, arg)
 
 
 def add(namesp, arg):
@@ -115,9 +115,8 @@ def create(namesp, arg):
 
 
 def get(namespace, val):
-    if val in all_dict[namespace]:
+    if val in all_dict[namespace][1]:
         print(namespace)
-        return
     else:
         print('None')
         
