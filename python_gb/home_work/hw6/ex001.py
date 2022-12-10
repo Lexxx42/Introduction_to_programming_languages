@@ -13,3 +13,12 @@
 # out
 # [28, 20, 10, 5, 1, 24, 7, 15, 23, 25]
 # [24, 15, 23, 25]
+
+from random import randint
+
+n = int(input(''))
+generated_list = [randint(0, 100) for _ in range(n)]
+answer_list = [generated_list[i] for i in range(1, len(generated_list)) if
+               generated_list[i] > generated_list[i - 1]]
+print(generated_list)
+print(answer_list)
