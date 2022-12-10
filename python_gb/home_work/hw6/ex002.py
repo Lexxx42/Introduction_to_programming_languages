@@ -16,5 +16,4 @@
 # 360, 378, 380, 399, 400, 420]
 
 n = int(input())
-list_input = [i for i in range(20, n + 1)]
-print(list(filter(lambda x: not x % 20 or not x % 21, list_input)))
+print(list(filter(lambda x: not x % 20 or not x % 21, [i for i in range(20, n + 1)])))
