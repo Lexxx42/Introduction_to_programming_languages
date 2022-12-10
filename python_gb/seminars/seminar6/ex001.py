@@ -30,7 +30,6 @@ def result(list_elemens: list):
         if isinstance(k, list):
             list_elemens[j] = result(k)
     r_list = [i for i, v in enumerate(list_elemens) if v in '*/']
-    count_list = []
     while r_list:
         index_op = r_list[0]
         a, b, c = list_elemens[index_op - 1:index_op + 2]
