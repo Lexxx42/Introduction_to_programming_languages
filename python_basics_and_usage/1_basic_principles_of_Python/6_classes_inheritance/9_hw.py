@@ -34,8 +34,6 @@ class LoggableList(list, Loggable):
         super(LoggableList, self).log(item)
 
 
-
-
 ex_stack = LoggableList([1, 2, 3, 4, -3, 3, 5, 10])
 ex_stack.append(2)
 
