@@ -82,3 +82,26 @@
 # Sample Output:
 #
 # FileNotFoundError
+
+import sys
+
+sys.stdin = open("input.txt", "r")
+
+n = int(input())
+answer = dict()
+for i in range(n):
+    input_list = input().replace(':', "").split()
+    if input_list[len(input_list) - 1] in answer:
+        for k in range(1, len(input_list)):
+            if input_list[k] in answer:
+                answer.get(input_list[k]).append(input_list[0])
+            else:
+                answer[input_list[k]] = []
+                answer.get(input_list[k]).append(input_list[0])
+    else:
+        for j in range(1, len(input_list)):
+            answer_list = []
+            answer_list.append(input_list[0])
+            answer[input_list[j]] = answer_list
+
+

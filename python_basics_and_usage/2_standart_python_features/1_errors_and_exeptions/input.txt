@@ -1,0 +1,5 @@
+4
+ArithmeticError
+ZeroDivisionError : ArithmeticError
+OSError
+FileNotFoundError : OSError
