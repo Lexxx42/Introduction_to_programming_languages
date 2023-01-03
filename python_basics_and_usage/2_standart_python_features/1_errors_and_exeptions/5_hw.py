@@ -87,6 +87,21 @@ import sys
 
 sys.stdin = open("input.txt", "r")
 
+
+def find_path(graph, start, end, path=[]):
+    path = path + [start]
+    if start == end:
+        return path
+    if start not in graph:
+        return None
+    for node in graph[start]:
+        if node not in path:
+            new_path = find_path(graph, node, end, path)
+            if new_path:
+                return new_path
+    return None
+
+
 n = int(input())
 answer = dict()
 for i in range(n):
@@ -104,4 +119,36 @@ for i in range(n):
             answer_list.append(input_list[0])
             answer[input_list[j]] = answer_list
 
+print(answer)
+q = int(input())
+req_list = []
+for k in range(q):
+    req_list.append(input())
+print(req_list)
+print("***")
 
+
+def is_relative(list_of_parents, elem):
+    global answer
+    for i, item in enumerate(list_of_parents):
+        if find_path(answer, list_of_parents[i], elem):
+            return True
+        else:
+            continue
+    return False
+
+
+a_answer = []
+parents_for_check = []
+a_answer.append(req_list[0])
+for k, item in enumerate(req_list):
+    if k == 0:
+        parents_for_check.append(item)
+        continue
+    if not is_relative(parents_for_check, item):
+        parents_for_check.append(item)
+    else:
+        print(item)
+
+
+#print(parents_for_check)
