@@ -1,5 +1,6 @@
 # Introduction_to_programming_languages
-my learning vault
+Всем привет! Учусь в Хогвартсе. Проклятая шляпа распределила меня в Слизарен, а там без Python никуда...
+Hello! I study at Hogwarts. The damned hat assigned me to Slizaren, and there without Python, nowhere ...
 
 # C#. GB
 
