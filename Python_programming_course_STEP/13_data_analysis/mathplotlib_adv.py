@@ -14,12 +14,12 @@ y = x**2
 
 fig = plt.figure()
 
-# left, bottom, width, height (range 0 to 1) <- main axes
+# left, bottom, width, height (range 0 to 1) <- main_test axes
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8])
 axes2 = fig.add_axes([0.2, 0.5, 0.4, 0.3])  # <- inset axes
 # относительные координаты относительно картинки
 
-# main figure
+# main_test figure
 axes1.plot(x, y, 'r')
 axes1.set_xlabel('x')
 axes1.set_ylabel('y')

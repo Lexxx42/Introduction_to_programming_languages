@@ -16,7 +16,7 @@
 # Модуль 2: logger
 # Модуль 3: user_interface
 # Модуль 4: html_creator
-# Модуль 5: main
+# Модуль 5: main_test
 
 # В рамках этих модулей напишем некоторый набор методов
 
@@ -24,4 +24,4 @@
 # logger: temperature_logger, pressure_logger, wind_speed_logger
 # user_interface: temperature_view, pressure_view, wind_speed_view
 # html_creator: create
-# main: запуск системы
+# main_test: запуск системы
