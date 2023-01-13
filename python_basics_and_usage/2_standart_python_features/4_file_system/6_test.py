@@ -21,5 +21,6 @@ for current_dir, dirs, files in os.walk("."):
             answer.add(current_dir[2:])
 print(output := "\n".join(sorted(answer)))
 
-with open("out_file.txt", "w") as out_file:
+os.chdir("..")
+with open("out_file.txt", "w", encoding="utf-8") as out_file:
     out_file.write(output)
