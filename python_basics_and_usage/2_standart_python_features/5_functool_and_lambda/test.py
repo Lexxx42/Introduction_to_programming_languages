@@ -1,4 +1,5 @@
 import operator as op
+from functools import partial
 
 x = [
     ("Guido", 1),
@@ -11,12 +12,14 @@ def sorting(name):
     return name[1]
 
 
-# name_lengths = [sorting(name) for name in x]
-# print(name_lengths)
-
 x.sort(key=lambda x: x[1], reverse=True)
 print(x)
 
 print()
 x.sort(key=op.itemgetter(-1), reverse=True)
+print(x)
+
+print()
+sort_by_last = partial(list.sort, key=op.itemgetter(-1), reverse=True)
+sort_by_last(x)
 print(x)
