@@ -1,3 +1,5 @@
+import operator as op
+
 x = [
     ("Guido", 1),
     ("Heskel", 12),
@@ -13,4 +15,8 @@ def sorting(name):
 # print(name_lengths)
 
 x.sort(key=lambda x: x[1], reverse=True)
+print(x)
+
+print()
+x.sort(key=op.itemgetter(-1), reverse=True)
 print(x)
