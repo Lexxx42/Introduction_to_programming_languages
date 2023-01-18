@@ -8,12 +8,12 @@
 
 # Для этого у нас есть методы lower(), upper()
 
-# s = "ku-Ku, blyAT!"
-# print(s.count("ku"))
-# print(s.lower())
-# print(s.lower().count("ku"))
-# print(s.upper())
-# print(s.upper().count("ku"))
+s = "ku-Ku, blyAT!"
+print(s.count("ku"))
+print(s.lower())
+print(s.lower().count("ku"))
+print(s.upper())
+print(s.upper().count("ku"))
 
 # 1
 # ku-ku, blyat!
@@ -22,6 +22,7 @@
 # 0
 
 # Метод replace() позволяет найти все вхождения
+print("ppp")
 s = "1, 2, 3, 4"
 print(s)  # 1, 2, 3, 4
 print(s.replace(",", "!"))  # 1! 2! 3! 4
