@@ -44,7 +44,29 @@ import sys
 
 sys.stdin = open("hw6.txt")
 
-s, t = input(), input()
 
-pos = 0
-pos = s.find(t, pos) + 1
+# s, t = input(), input()
+# count, position = 0, 0
+# c_set = set()
+# while s.find(t, position) >= 0:
+#     c_set.add(s.find(t, position))
+#     position += 1
+# print(len(c_set))
+
+# s, t = input(), input()
+#
+# print(sum(1 for i in range(len(s)) if s.startswith(t, i)))
+
+# import re
+#
+# s, t = input(), '(?=' + input() + ')'
+# print(len(re.findall(t, s)))
+
+def cross_count(s, t):
+    try:
+        return 1 + cross_count(s[s.index(t) + 1:], t)
+    except (ValueError, IndexError):
+        return 0
+
+
+print(cross_count(input(), input()))
