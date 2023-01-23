@@ -26,9 +26,18 @@
 import sys
 import re
 
-sys.stdin = open("hw6.txt")
-pattern = "cat"
+# sys.stdin = open("hw6.txt")
+# pattern = "cat"
+#
+# for line in sys.stdin:
+#     line = line.strip()
+#     print(line + '\n' if len(re.findall(pattern, line)) >= 2 else "", end='')
 
+
+sys.stdin = open("hw6.txt")
+pattern = r"(cat.*){2,}"
 for line in sys.stdin:
     line = line.strip()
-    print(line + '\n' if len(re.findall(pattern, line)) >= 2 else "", end='')
+
+    if re.search(pattern, line):
+        print(line)
