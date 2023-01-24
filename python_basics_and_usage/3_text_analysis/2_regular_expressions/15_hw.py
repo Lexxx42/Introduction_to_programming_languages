@@ -38,3 +38,13 @@ for line in sys.stdin:
     print(line + "\n" if line.isalnum() and int(line, 2) % 3 < 1 else "", end="")
 
 [print(line, end="") for line in sys.stdin if line.strip().isalnum() and int(line.strip(), 2) % 3 < 1]
+
+import re
+import sys
+
+pattern = "^(0|(1(01*0)*1))*$"
+pattern = re.compile(pattern)
+for line in sys.stdin:
+    line = line.rstrip()
+    if pattern.match(line):
+        print(line)
