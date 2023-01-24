@@ -15,7 +15,7 @@
 import sys
 import re
 
-pattern = r""
+pattern = r"\b(\w+)\1\b"
 sys.stdin = open("hw10.txt")
 for line in sys.stdin:
     line = line.strip()
