@@ -28,15 +28,24 @@
 # ya.ru
 
 import requests
-from lxml import html
+import re
+import lxml.html
 
 ref = "http://pastebin.com/raw/7543p0ns"
 res_a = requests.get(ref)
 list_links = set()
 
-html = html.document_fromstring(res_a.text)
+html = lxml.html.document_fromstring(res_a.text)
 for a in html.iter('a'):
     list_links.add(a.get('href'))
 list_links.remove(None)
+
+pattern = r"http://(\w+).\w+"
+answer = set()
 for link in sorted(list_links):
-    print(link)
+    if re.search(pattern, link):
+        answer.add(link)
+print(len(list_links))
+print(len(answer))
+for i in answer:
+    print(i)
