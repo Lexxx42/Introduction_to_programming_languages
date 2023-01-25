@@ -40,12 +40,12 @@ for a in html.iter('a'):
     list_links.add(a.get('href'))
 list_links.remove(None)
 
-pattern = r"http://(\w+).\w+"
+pattern = r"http://(\S+)/(\w+)"
 answer = set()
 for link in sorted(list_links):
     if re.search(pattern, link):
         answer.add(link)
 print(len(list_links))
 print(len(answer))
-for i in answer:
-    print(i)
+# for i in sorted(list_links):
+#     print(i)
