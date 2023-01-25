@@ -44,8 +44,9 @@ pattern = r"http://(\S+)/(\w+)"
 answer = set()
 for link in sorted(list_links):
     if re.search(pattern, link):
-        answer.add(link)
+        answer.add(re.sub(pattern, r"\1", link))
 print(len(list_links))
 print(len(answer))
-# for i in sorted(list_links):
-#     print(i)
+
+for i in sorted(answer):
+    print(i)
