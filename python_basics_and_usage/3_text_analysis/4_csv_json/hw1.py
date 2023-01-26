@@ -35,31 +35,40 @@
 # B : 1
 # C : 2
 import json
+import networkx as nx
 
 input_json = [{"name": "A", "parents": []}, {"name": "B", "parents": ["A", "C"]}, {"name": "C", "parents": ["A"]}]
 # input_json = json.loads(input())
 
 file = json.dumps(input_json)
 data_read = json.loads(file)
-print(data_read)
+
 dict_json = {}
 
 for i, item in enumerate(data_read):
-    dict_json[data_read[i]["name"]] = set(data_read[i]["parents"])
-print(dict_json)
+    if not data_read[i]["parents"]:
+        dict_json[data_read[i]["name"]] = set(data_read[i]["name"])
+        continue
+    for parent in data_read[i]["parents"]:
+        if parent not in dict_json:
+            dict_json[parent] = set(data_read[i]["name"])
+        else:
+            dict_json.get(parent).add(data_read[i]["name"])
+sorted_tuples = sorted(dict_json.items(), key=lambda item: item[1])
+dict_json = {k: v for k, v in sorted_tuples}
+print(dict_json)  # parents:children
+list_1 = []
 
+children = set()
+for j, item in enumerate(data_read):
+    children.add(item['name'])
+children = sorted(children)
 
-def dfs_paths(graph, start, goal):
-    stack = [(start, [start])]
-    while stack:
-        (vertex, path) = stack.pop()
-        for next in graph[vertex] - set(path):
-            if next == goal:
-                yield path + [next]
-            else:
-                stack.append((next, path + [next]))
+print(children)
 
+data2 = {i : 0 for i in children}
+print(data2) # РЕБЕНОК : КОЛ-ВО ПОТОМКОВ
 
-for key in dict_json:
-    print(list(dfs_paths(dict_json, key, 'A')))
-    print(f"{key} : {len(list(dfs_paths(dict_json, 'B', key))) + 1}")
+for i in dict_json:
+    visited = []
+    f()
