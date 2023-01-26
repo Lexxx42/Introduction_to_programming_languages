@@ -37,21 +37,29 @@
 import json
 
 input_json = [{"name": "A", "parents": []}, {"name": "B", "parents": ["A", "C"]}, {"name": "C", "parents": ["A"]}]
+# input_json = json.loads(input())
 
 file = json.dumps(input_json)
 data_read = json.loads(file)
+print(data_read)
 dict_json = {}
+
 for i, item in enumerate(data_read):
-    if not data_read[i]["parents"]:
-        dict_json["".join(data_read[i]["name"]) + "+"] = data_read[i]["name"]
-        continue
-    dict_json["".join(data_read[i]["parents"])] = data_read[i]["name"]
-dict_json = dict(sorted(dict_json.items()))
+    dict_json[data_read[i]["name"]] = set(data_read[i]["parents"])
 print(dict_json)
 
-for value in dict_json.values():
-    count = 0
-    for key in dict_json:
-        if value in key:
-            count += 1
-    print(f"{value} : {count}")
+
+def dfs_paths(graph, start, goal):
+    stack = [(start, [start])]
+    while stack:
+        (vertex, path) = stack.pop()
+        for next in graph[vertex] - set(path):
+            if next == goal:
+                yield path + [next]
+            else:
+                stack.append((next, path + [next]))
+
+
+for key in dict_json:
+    print(list(dfs_paths(dict_json, key, 'A')))
+    print(f"{key} : {len(list(dfs_paths(dict_json, 'B', key))) + 1}")
