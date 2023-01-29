@@ -48,9 +48,7 @@ def dfs(graph, start):
     return visited
 
 
-# input_json = [{"name": "A", "parents": []}, {"name": "B", "parents": ["A", "C"]}, {"name": "C", "parents": ["A"]}]
 input_json = [{"name": "A", "parents": []}, {"name": "B", "parents": ["A", "C"]}, {"name": "C", "parents": ["A"]}]
-# input_json = json.loads(input())
 
 file = json.dumps(input_json)
 data_read = json.loads(file)
