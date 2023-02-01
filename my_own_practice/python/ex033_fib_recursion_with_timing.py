@@ -1,6 +1,6 @@
-from time import process_time
+from time import perf_counter_ns
 
-t = process_time()
+t = perf_counter_ns()
 
 
 def fibonacci_of(n):
@@ -14,4 +14,4 @@ def fibonacci_of(n):
 cache = {0: 0, 1: 1}
 fib = [fibonacci_of(n) for n in range(1500)]
 print(fib[-1])
-print(process_time() - t)
+print(perf_counter_ns() - t)
