@@ -27,7 +27,7 @@
 import sys
 import requests
 
-sys.stdin = open("dataset_24476_3.txt")
+sys.stdin = open("dataset_24476_3.txt", encoding='utf-8')
 
 for number in sys.stdin:
     number = number.strip()

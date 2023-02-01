@@ -1,5 +1,5 @@
 # В этой задаче вам необходимо воспользоваться API сайта artsy.net
-
+import json
 # API проекта Artsy предоставляет информацию о некоторых деятелях искусства, их работах, выставках.
 
 # В рамках данной задачи вам понадобятся сведения о деятелях искусства (назовем их, условно, художники).
@@ -77,3 +77,46 @@
 # в то время как для записи имен на сайте используется кодировка UTF-8,
 # что может привести к ошибке при попытке записать в файл имя с необычными символами.
 # Вы можете использовать print, или аргумент encoding функции open.
+
+import os
+import requests
+import json
+import sys
+from dotenv import load_dotenv
+
+load_dotenv()
+
+CLIENT_ID = os.getenv('CLIENT_ID')
+CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+API_URL = 'https://api.artsy.net/api/tokens/xapp_token'
+
+params = {
+    'client_id': CLIENT_ID,
+    'client_secret': CLIENT_SECRET,
+}
+
+response = requests.post(API_URL, params=params)
+print(response.status_code)
+print(response.headers['Content-Type'])
+token = response.json()['token']
+
+# создаем заголовок, содержащий наш токен
+headers = {'X-Xapp-Token': token}
+# инициируем запрос с заголовком
+
+
+sys.stdin = open("dataset_24476_4.txt", encoding='utf-8')
+output = []
+for sortable_name in sys.stdin:
+    sortable_name = sortable_name.strip()
+    r = requests.get(f'https://api.artsy.net/api/artists/{sortable_name}', headers=headers)
+    j = json.loads(r.text)
+    print(j)
+    output.append((j['sortable_name'], j['birthday']))
+print(output)
+output.sort(key=lambda x: x[0])
+output = sorted(output, key=lambda x: x[1])
+print(output)
+
+with open("output.txt", "w", encoding='utf-8') as f:
+    [f.write(artist[0] + '\n') for artist in output]
