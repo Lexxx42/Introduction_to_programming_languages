@@ -1,0 +1,9 @@
+<student>
+    <firstName>Greg</firstName>
+    <secondName>Dean</secondName>
+    <scores>
+        <module1>100</module1>
+        <module2>100</module2>
+        <module2>100</module2>
+    </scores>
+</student>
