@@ -27,24 +27,37 @@
 # www.ya.ru
 # ya.ru
 
+# import requests
+# import lxml.html
+# import tldextract
+#
+# list_links = set()
+# link = requests.get(input().strip().replace('stepic.org', 'stepik.org'))
+# html_1 = lxml.html.document_fromstring(link.text)
+#
+# for a in html_1.iter('a'):
+#     list_links.add(a.get('href'))
+# list_links.remove(None)
+#
+# answer = set()
+# for link in list_links:
+#     ext = tldextract.extract(link)
+#     if ext.domain:
+#         answer.add('.'.join(ext) if ext.subdomain else '.'.join(ext[1:]))
+#
+# for item in sorted(answer):
+#     print(item)
+
 import requests
-import lxml.html
-import tldextract
+import re
 
-list_links = set()
-link = requests.get(input().strip().replace('stepic.org', 'stepik.org'))
-html_1 = lxml.html.document_fromstring(link.text)
+link = input().strip().replace('stepic.org', 'stepik.org')
 
-for a in html_1.iter('a'):
-    list_links.add(a.get('href'))
-list_links.remove(None)
-
-print(list_links)
-answer = set()
-for link in list_links:
-    ext = tldextract.extract(link)
-    if ext.domain:
-        answer.add('.'.join(ext) if ext.subdomain else '.'.join(ext[1:]))
-
-for item in sorted(answer):
+file = requests.get(link).text
+a = set(re.findall(r'<a[^>]* href="([^"\']*)"', file))
+b = set()
+for item in a:
+    b.add((li if len(li := re.findall(r'\S+://([^/]+)/\S+', item)) == 1 else ["+"])[0])
+b.remove("+")
+for item in sorted(b):
     print(item)
