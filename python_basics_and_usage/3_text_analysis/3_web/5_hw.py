@@ -28,25 +28,23 @@
 # ya.ru
 
 import requests
-import re
 import lxml.html
+import tldextract
 
-ref = "http://pastebin.com/raw/7543p0ns"
-res_a = requests.get(ref)
 list_links = set()
+link = requests.get(input().strip().replace('stepic.org', 'stepik.org'))
+html_1 = lxml.html.document_fromstring(link.text)
 
-html = lxml.html.document_fromstring(res_a.text)
-for a in html.iter('a'):
+for a in html_1.iter('a'):
     list_links.add(a.get('href'))
 list_links.remove(None)
 
-pattern = r"http://(\S+)/(\w+)"
+print(list_links)
 answer = set()
-for link in sorted(list_links):
-    if re.search(pattern, link):
-        answer.add(re.sub(pattern, r"\1", link))
-print(len(list_links))
-print(len(answer))
+for link in list_links:
+    ext = tldextract.extract(link)
+    if ext.domain:
+        answer.add('.'.join(ext) if ext.subdomain else '.'.join(ext[1:]))
 
-for i in sorted(answer):
-    print(i)
+for item in sorted(answer):
+    print(item)
